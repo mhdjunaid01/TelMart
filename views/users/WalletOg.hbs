@@ -1,0 +1,70 @@
+<main class="main">
+	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+		<div class="container">
+			<h1 class="page-title">Order Details</h1>
+		</div><!-- End .container -->
+	</div><!-- End .page-header -->
+
+	<div class="page-content">
+		<div class="container ">
+            <div>
+                <h3 class="text-primary">TelMart Wallet</h3>
+            </div>
+            <div class="card">
+                <div class="card-body" style="border: 2px solid rgb(237, 214, 171);border-radius: 4px; width:auto ;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="https://cdn.dribbble.com/users/61734/screenshots/5384735/media/cf4f6e9320fbf91053e149fc7cae6b72.png?compress=1&resize=1000x750&vertical=top"
+                                alt="" style="height:112px;">
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="mt-5">Wallet Balance : </h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="mt-5 ">₹ <span>{{wallet.walletAmount}}</span></h4>
+                        </div>
+                        {{!-- <div class="col-md-3 mt-5">
+                            <BUTTON ONCLICK="ShowAndHide()" id="showButton" class="btn btn-success rounded">Show
+                                Transactions</BUTTON>
+                        </div> --}}
+                    </div>
+
+                </div>
+            </div>
+           
+            </div> --}}
+        </div><!-- .End .tab-pane -->
+		</div><!-- End .container -->
+	
+</main><!-- End .main -->
+
+{{!--
+<script>
+
+
+
+
+	function CancelProduct(cartId, proId, quantity) {
+
+		console.log('entheda')
+		$.ajax({
+			url: '/cancelOrder',
+			data: {
+				cart: cartId,
+				product: proId,
+				qty: quantity,
+			},
+			method: 'post',
+			success: (obj) => {
+				console.log(obj + 'PPPPPPPPP')
+
+				alert("Do you want to cancel the order")
+				location.reload()
+
+			}
+		})
+	}
+
+
+</script>
+--}}

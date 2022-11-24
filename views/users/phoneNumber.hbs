@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <div class="text-center mt-4 name">
+        LOGIN WITH OTP
+    </div>
+
+    <span id="phonenumbers" class="text-danger"></span>
+    <form class="p-3 mt-3" action="/loginotp" method="post" onsubmit="return validation()">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="tel" <input type="tel" class="form-control" name="number" id="phonenumber"
+                onkeyup="validPhoneNumber()" placeholder="Phone Number">
+
+        </div>
+
+        <button type="submit" class="btn mt-3">Get OTP</button>
+    </form>
+</div>
+<script>
+
+    var errorPhonenumber = document.getElementById('phonenumbers')
+    function validPhoneNumber() {
+        const mob = document.getElementById('phonenumber').value
+        if (mob == "") {
+            errorPhonenumber.innerHTML = "enter a phone number"
+            return false
+        }
+        if (mob.length < 10 || !mob.match(/^\d*$/)) {
+            errorPhonenumber.innerHTML = "Please Enter the valide phone number"
+            return false
+        }
+        errorPhonenumber.innerHTML = null
+        return true
+    }
+    function validation() {
+        if (!validPhoneNumber()) {
+            return false
+        }
+        return true
+    }
+</script>

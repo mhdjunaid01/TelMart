@@ -1,0 +1,116 @@
+<main id="main" class="main">
+
+
+  <!-- Top Selling -->
+  <div class="col-12">
+    <div class="card top-selling overflow-auto">
+
+      <div class="filter">
+        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+          <li class="dropdown-header text-start">
+            <h6>Filter</h6>
+          </li>
+
+          <li><a class="dropdown-item" href="#">Today</a></li>
+          <li><a class="dropdown-item" href="#">This Month</a></li>
+          <li><a class="dropdown-item" href="#">This Year</a></li>
+        </ul>
+      </div>
+
+      <div class="card-body pb-0">
+        <h5 class="card-title">Top Selling <span>| Today</span></h5>
+
+        <table class="table table-borderless" id="table">
+          <thead>
+            <tr>
+
+              <th>Image</th>
+              <th>Product Name</th>
+              <th> Price</th>
+              <th>Quantity</th>
+              <th> Status</th>
+              {{!-- <th>Order Details </th> --}}
+            </tr>
+          </thead>
+          {{#each products}}
+          <tbody>
+            <tr>
+              <td class="price-col"><img src="/images/product/{{this.product.img.[0]}}" alt=""
+                  style="height: 60px; width: 60px;"></td>
+              <td>{{this.product.phone}}</td>
+              <td>{{this.product.price}}</td>
+              <td>{{this.quantity}}</td>
+              {{!-- <td>{{this.totalAmount}}</td> --}}
+              {{!-- <td>{{this.status}}</td> --}}
+              <td>
+                <form>
+                  <div class="input-group">
+                    <select id="statuschange{{this.product._id}}" name="status">
+                      <option selected>{{this.status}}</option>
+                      <option value="Order Confirmed">Order Confirmed</option>
+                      <option value="Shipped">Shipped</option>
+                      <option value="out for Delivery">out for Delivery
+                      </option>
+                      <option value="Delivered">Delivered</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                    <input  type="hidden" name="orderId" value="{{this._id}}" z>
+                    <button class="btn-btn-outline-secondary ms-3" type="button"
+                      onclick="updateStatus('{{this._id}}','{{this.product._id}}')" style="background-color: rgb(255, 255, 255); border-radius: 5px;border-color: lightslategray;">Submit</button>
+                  </div>
+                           
+                </form>
+
+
+              </td>
+
+
+
+            </tr>
+          </tbody>
+          {{/each}}
+        </table>
+
+      </div>
+
+    </div>
+  </div><!-- End Top Selling -->
+
+</main><!-- End #main -->
+
+<script>
+
+
+  function updateStatus(orderId, ProductId) {
+    console.log('pppppppppp')
+
+    let status = document.getElementById('statuschange' + ProductId).value
+    console.log(status)
+    console.log("111")
+    $.ajax({
+      url: '/admin/changeOrderStatus',
+      data: {
+        status: status,
+        orderId: orderId,
+        ProductId: ProductId,
+      },
+      method: 'post',
+      success: () => {
+        location.reload()
+      }
+    })
+  }
+</script>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf8"
+  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+
+<script>
+
+ $('table').dataTable( {
+  paginate: false,
+  scrollY: 300
+} );
+</script>

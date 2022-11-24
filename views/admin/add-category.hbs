@@ -1,0 +1,44 @@
+<main id="main" class="main">
+
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-6">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center">Add Category</h5>
+
+            <!-- General Form Elements -->
+            <form action="/admin/add-category" method="post" enctype="multipart/form-data">
+
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="category">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-10">
+                  <input type="file" class="" name="image" id="gallery-photo-add" multiple required>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+
+            </form><!-- End General Form Elements -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->

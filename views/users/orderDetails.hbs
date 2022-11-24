@@ -1,0 +1,87 @@
+<main class="main">
+	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+		<div class="container">
+			<h1 class="page-title">Order Details</h1>
+		</div><!-- End .container -->
+	</div><!-- End .page-header -->
+
+	<div class="page-content">
+		<div class="container">
+			<table class="table table-wishlist table-mobile">
+				<thead>
+					<tr>
+						<th>Image</th>
+						<th>Product</th>
+						{{!-- <th>Discount</th> --}}
+						<th> Quantity</th>
+						<th>status</th>
+
+					</tr>
+				</thead>
+
+				<tbody>
+					{{#each orders}}
+					<tr>
+
+						<td class="price-col"><img src="/images/product/{{product.img.[0]}}" alt=""
+								style="height: 60px; width: 60px;"></td>
+
+						<td class="stock-col"><span class="">{{this.product.phone}}</span></td>
+
+						<td class="stock-col"><span class="in-stock">{{this.quantity}}</span></td>
+						
+
+						<td class="stock-col"><span class="">{{this.status}}</span></td>
+
+
+
+						
+
+						{{#if this.delivered}}
+						<td class="action-col">
+							<a href="/returnProduct/?orderid={{this._id}}&proId={{this.item}}"><button
+									class="btn btn-block btn-danger">Return </button></a>
+						</td>
+
+						{{else if this.returnRequest}}
+						
+
+						{{else if returnApproved}}
+
+
+						{{else}}
+
+						{{#if this.cancelled}}
+						<td class="action-col">
+							<a href="/cancelorderStatus/?orderid={{this._id}}&proId={{this.item}}"><button
+									class="btn btn-block btn-danger">Cancel </button></a>
+						</td>
+
+						{{else}}
+						<td class="action-col">
+							<a href="/cancelorderStatus/?orderid={{this._id}}&proId={{this.item}}"><button
+									class="btn btn-block btn-danger">Cancel </button></a>
+						</td>
+						{{/if}}
+
+						 {{/if}}
+
+
+					</tr>
+					{{/each}}
+				</tbody>
+			</table><!-- End .table table-wishlist -->
+			<div class="wishlist-share">
+				<div class="social-icons social-icons-sm mb-2">
+					<label class="social-label">Share on:</label>
+					<a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+					<a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+					<a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+					<a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+					<a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+				</div><!-- End .soial-icons -->
+			</div><!-- End .wishlist-share -->
+		</div><!-- End .container -->
+	</div><!-- End .page-content -->
+</main><!-- End .main -->
+

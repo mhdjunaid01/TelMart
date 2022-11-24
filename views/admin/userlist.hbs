@@ -1,0 +1,66 @@
+
+<main id="main" class="main">
+  <section>
+    <div class="container">
+      <div class="row m-4 d-flex justify-content-end">
+        {{!-- <a href="/admin/userlist" style="width:auto" class="btn btn-success mt-5">Add User</a> --}}
+      </div>
+      <div>
+        {{#if response.errMessage}}
+        <p>{{this.errMessage}}</p>
+        {{/if}}
+
+        <table class="table" id="table">
+          <thead>
+            <tr class="text-center bg-secondary">
+
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Actions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {{#each response}}
+            <tr class="text-center">
+
+              <td>{{this.name}}</td>
+              <td>{{this.email}}</td>
+
+              {{#if this.signupstatus}}
+
+
+              <td> <a href="/admin/userblock/{{this._id}}" class="btn btn-danger">block</a></td>
+              {{else}}
+              <td> <a href="/admin/userUnblock/{{this._id}}" class="btn btn-primary">Unblock</a></td>
+
+
+
+              {{/if}}
+
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+{{!-- <script type="text/javascript"> --}}
+
+
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf8"
+  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+
+<script>
+
+ $('table').dataTable( {
+  paginate: false,
+  scrollY: 300
+} );
+</script>

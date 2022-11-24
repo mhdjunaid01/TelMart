@@ -1,0 +1,38 @@
+<div class="wrapper">
+    {{#if otperr}}
+    <p class="text-danger">{{otperr}}</p>
+    {{/if}}
+    <div class="text-center mt-4 name">
+        LOGIN WITH OTP
+    </div>
+    <span id="otp" class="text-danger"></span>
+    <form class="p-3 mt-3" method="post" action="/getotp" onsubmit="return validation()">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="number" name="otp" id="Otp" onkeyup="validOtp()" placeholder="ENTER OTP">
+        </div>
+        <button class="btn mt-3">LOGIN</button>
+    </form>
+</div>
+<script>
+    var errorPhonenumber = document.getElementById('otp')
+    function validOtp() {
+        const mob = document.getElementById('Otp').value
+        if (mob == "") {
+            errorPhonenumber.innerHTML = "enter Your OTP"
+            return false
+        }
+        if (mob.length < 6 || mob.length > 6 || !mob.match(/^\d*$/)) {
+            errorPhonenumber.innerHTML = "Please Enter the valid OTP"
+            return false
+        }
+        errorPhonenumber.innerHTML = null
+        return true
+    }
+    function validation() {
+        if (!validPhoneNumber()) {
+            return false
+        }
+        return true
+    }
+</script>

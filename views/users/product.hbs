@@ -1,0 +1,308 @@
+<body>
+
+
+	<div class="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="toolbox">
+						
+						
+					</div><!-- End .toolbox -->
+
+					<div class="products mb-3">
+
+						<div class="row justify-content-center ">
+							{{#each products }}
+							<div class="col-6 col-md-4 col-lg-4">
+								<div class="product product-7 text-center">
+									<figure class="product-media">
+										<span class="product-label label-new">New</span>
+										<a href="/productview/{{this._id}}">
+											<img src="/images/product/{{this.img.[0]}}" alt="Product image"
+												class="product-image" style="width: 250px; height:300px;">
+										</a>
+
+										<div class="product-action-vertical">
+											<a href="/addToWishlist/{{this._id}}"
+												class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+													wishlist</span></a>
+											
+										</div><!-- End .product-action-vertical -->
+
+										<div class="product-action">
+											<a href="/addToCart/{{this._id}}" class="added btn-product btn-cart"
+												title="Add to cart"><span>add To cart</span></a>
+										</div><!-- End .product-action -->
+									</figure><!-- End .product-media -->
+
+									<div class="product-body">
+										<div class="product-cat">
+											<a href="#"></a>
+										</div><!-- End .product-cat -->
+										<h3 class="product-title"><a href=""></a>{{this.phone}}</h3>
+										<!-- End .product-title -->
+										<div class="product-price">
+
+											{{#if this.Percentage}}
+											<span>₹{{this.offPrice}}&nbsp;&nbsp;</span>
+											₹ <s>{{this.originalPrice}} </s>
+											<span>&nbsp;&nbsp;{{this.Percentage}}%</span>
+											{{else}}
+											₹{{this.price}}
+											{{/if}}
+
+										</div><!-- End .product-price -->
+										
+
+										<div class="product-nav product-nav-thumbs">
+											<a href="#" class="active">
+												<img src="/images/product/{{this.img.[1]}}" alt="product desc"
+													style="width: 60px; height: 50px;">
+											</a>
+											<a href="#">
+												<img src="/images/product/{{this.img.[2]}}" alt="product desc"
+													style="width: 60px; height: 50px;">
+											</a>
+
+											<a href="#">
+												<img src="/images/product/{{this.img.[3]}}" alt="product desc"
+													style="width: 60px; height: 50px;">
+											</a>
+										</div><!-- End .product-nav -->
+									</div><!-- End .product-body -->
+								</div><!-- End .product -->
+							</div><!-- End .col-sm-6 col-lg-4 -->
+							{{/each}}
+						</div><!-- End .row -->
+					</div><!-- End .products -->
+
+					<nav aria-label="Page navigation" style="margin-left: 240px;">
+							    <ul class="pagination">
+									{{#ifEquals '1' currentPage}}
+							        <li class="page-item disabled" >
+							            <a class="page-link page-link-prev" href="/product/?page={{../previous.page}}" aria-label="Previous" tabindex="-1">
+							                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+							            </a>
+							        </li>
+									{{else}}
+									 <li class="page-item">
+							            <a class="page-link page-link-prev" href="/product/?page={{../previous.page}}" aria-label="Previous" tabindex="-1" >
+							                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+							            </a>
+							        </li>
+									{{/ifEquals}}
+									{{#each pages}}
+									
+							       
+									<li class="page-item " aria-current="page"><a class="page-link" href="/product/?page={{this}}">{{this}}</a></li>
+									
+									{{/each}}
+									{{#ifEquals pageCount currentPage }}
+							        <li class="page-item disabled" >
+							            <a class="page-link page-link-next" href="/product/?page={{../next.page}}" aria-label="Next">
+							                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+							            </a>
+							        </li>
+									{{else}}
+									 <li class="page-item">
+							            <a class="page-link page-link-next" href="/product/?page={{../next.page}}" aria-label="Next">
+							                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+							            </a>
+							        </li>
+									{{/ifEquals}}
+							    </ul>
+							</nav>
+				</div><!-- End .col-lg-9 -->
+				<aside class="col-lg-3 order-lg-first">
+					<div class="sidebar sidebar-shop">
+						<div class="widget widget-clean">
+							<label>Filters:</label>
+							<a href="/product" class="sidebar-filter-clear">Clean All</a>
+						</div><!-- End .widget widget-clean -->
+
+
+						<div class="widget widget-collapsible mt-1 col-3">
+							<h3 class="widget-title">
+								<a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true"
+									aria-controls="widget-4">
+									Brand
+								</a>
+							</h3><!-- End .widget-title -->
+
+							<div class="collapse show" id="widget-4">
+								<div class="widget-body">
+
+									<form action="/filter" method="get">
+										{{#each brands}}
+										<div class="filter-items">
+
+											<div class="filter-item">
+												<div class="custom-control custom-checkbox">
+													<input type="checkbox" class="custom-control-input" name="brandName"
+														id="brand{{this._id}}" value="{{this._id}}">
+													<label class="custom-control-label"
+														for="brand{{this._id}}">{{this.category}}</label>
+												</div><!-- End .custom-checkbox -->
+											</div><!-- End .filter-item -->
+
+
+										</div><!-- End .filter-items -->
+										{{/each}}
+
+
+										<button type="submit" class=" btn btn-primary">Submit</button>
+									</form>
+								</div><!-- End .widget-body -->
+
+
+							</div><!-- End .collapse -->
+						</div><!-- End .widget -->
+
+						
+					</div><!-- End .sidebar sidebar-shop -->
+				</aside><!-- End .col-lg-3 -->
+			</div><!-- End .row -->
+		</div><!-- End .container -->
+	</div><!-- End .page-content -->
+
+
+	<footer class="footer">
+		<div class="footer-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-lg-3">
+						<div class="widget widget-about">
+							<img src="assets/images/logo.png" class="footer-logo" alt="Footer Logo" width="105"
+								height="25">
+							<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna
+								eros eu erat. </p>
+
+							<div class="social-icons">
+								<a href="#" class="social-icon" target="_blank" title="Facebook"><i
+										class="icon-facebook-f"></i></a>
+								<a href="#" class="social-icon" target="_blank" title="Twitter"><i
+										class="icon-twitter"></i></a>
+								<a href="#" class="social-icon" target="_blank" title="Instagram"><i
+										class="icon-instagram"></i></a>
+								<a href="#" class="social-icon" target="_blank" title="Youtube"><i
+										class="icon-youtube"></i></a>
+								<a href="#" class="social-icon" target="_blank" title="Pinterest"><i
+										class="icon-pinterest"></i></a>
+							</div><!-- End .soial-icons -->
+						</div><!-- End .widget about-widget -->
+					</div><!-- End .col-sm-6 col-lg-3 -->
+
+					<div class="col-sm-6 col-lg-3">
+						<div class="widget">
+							<h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+
+							<ul class="widget-list">
+								<li><a href="about.html">About Molla</a></li>
+								<li><a href="#">How to shop on Molla</a></li>
+								<li><a href="#">FAQ</a></li>
+								<li><a href="contact.html">Contact us</a></li>
+								<li><a href="login.html">Log in</a></li>
+							</ul><!-- End .widget-list -->
+						</div><!-- End .widget -->
+					</div><!-- End .col-sm-6 col-lg-3 -->
+
+					<div class="col-sm-6 col-lg-3">
+						<div class="widget">
+							<h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+
+							<ul class="widget-list">
+								<li><a href="#">Payment Methods</a></li>
+								<li><a href="#">Money-back guarantee!</a></li>
+								<li><a href="#">Returns</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Terms and conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul><!-- End .widget-list -->
+						</div><!-- End .widget -->
+					</div><!-- End .col-sm-6 col-lg-3 -->
+
+					<div class="col-sm-6 col-lg-3">
+						<div class="widget">
+							<h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+							<ul class="widget-list">
+								<li><a href="#">Sign In</a></li>
+								<li><a href="cart.html">View Cart</a></li>
+								<li><a href="#">My Wishlist</a></li>
+								<li><a href="#">Track My Order</a></li>
+								<li><a href="#">Help</a></li>
+							</ul><!-- End .widget-list -->
+						</div><!-- End .widget -->
+					</div><!-- End .col-sm-6 col-lg-3 -->
+				</div><!-- End .row -->
+			</div><!-- End .container -->
+		</div><!-- End .footer-middle -->
+
+		<div class="footer-bottom">
+			<div class="container">
+				<p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
+				<!-- End .footer-copyright -->
+				<figure class="footer-payments">
+					<img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+				</figure><!-- End .footer-payments -->
+			</div><!-- End .container -->
+		</div><!-- End .footer-bottom -->
+	</footer><!-- End .footer -->
+	</div><!-- End .page-wrapper -->
+	<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+
+	<script>
+		function addToCart(proId) {
+
+			$.ajax({
+				url: '/addToCart/' + proId,
+				method: 'get',
+				success: (response) => {
+					if (response.status) {
+						let count = $('#cart-count').html()
+
+						count = parseInt(count) + 1
+
+						$("#cart-count").html(count)
+
+					}
+
+
+
+				}
+			})
+		}
+
+
+		$('.added').on('click', function (e) {
+			e.preventDefault();
+			var self = $(this);
+			console.log(self.data('title'));
+			Swal.fire(
+				'Product Added to cart! ',
+				'',
+				'success'
+			).then((result) => {
+
+
+				location.href = self.attr('href');
+
+			})
+
+		})
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+		integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+		crossorigin="anonymous"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
+</body>

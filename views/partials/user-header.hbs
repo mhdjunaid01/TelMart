@@ -1,0 +1,184 @@
+
+<header class="header header-intro-clearance header-3 col-12">
+            <div class="header-top">
+                <div class="container">
+                  
+
+                    <div class="header-right" >
+                           {{#if userName}}
+
+                            <p style="margin-right: 18px; color: aliceblue;">{{userName.name}}</p> 
+                            {{/if}}
+
+                        <ul class="top-menu mt-1">
+                            <li>
+                                {{#if login}}
+                             
+                                        
+                                 <button class=" col-3 btn btn-outline-dark bg-dark" type="submit"> <a style="text-decoration:none; color: white" href="/logout"> Logout</a></button>
+                            
+                                {{else}}
+                                  <button class="col-3 btn btn-outline-dark bg-dark" type="submit"> <a style="text-decoration:none; color: white" href="/login"> LogIn</a></button>
+                                  {{/if}}
+                            </li>
+                        </ul><!-- End .top-menu -->
+                    </div><!-- End .header-right -->
+
+                </div><!-- End .container -->
+            </div><!-- End .header-top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left">
+                        
+                        
+                        <a href="/" class="logo">
+                            <img src="/assets/images/Screenshot 2022-11-07 190743.png" alt="Molla Logo" width="105" height="25">
+                        </a>
+                    </div><!-- End .header-left -->
+
+                    <div class="header-center">
+                        <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <form action="#" method="get">
+                                <div class="header-search-wrapper search-wrapper-wide">
+                                    <label for="q" class="sr-only">Search</label>
+                                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+
+                                    <input type="search" class="form-control" name="q" id="searchProducts" placeholder="Search product ..." required>
+                                    <ul id="productList" style="border: solid 2px; position: absolute; max-width: 360px; z-index: 5; background-color: white; width: 500px; display:none"> </ul>
+
+                                </div><!-- End .header-search-wrapper -->
+                            </form>
+                        </div><!-- End .header-search -->
+                    </div>
+
+                    <div class="header-right">
+                        {{!-- <div class="dropdown compare-dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                                <div class="icon">
+                                    <i class="icon-random"></i>
+                                </div>
+                                <p>Compare</p>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="compare-products">
+                                    <li class="compare-product">
+                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                        <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
+                                    </li>
+                                    <li class="compare-product">
+                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                        <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
+                                    </li>
+                                </ul>
+
+                                <div class="compare-actions">
+                                    <a href="#" class="action-link">Clear All</a>
+                                    <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
+                                </div>
+                            </div><!-- End .dropdown-menu -->
+                        </div><!-- End .compare-dropdown --> --}}
+
+                        <div class="wishlist">
+                            <a href="/wishlist" title="Wishlist">
+                                <div class="icon">
+                                    <i class="icon-heart-o"></i>
+                                      {{#if userName}}
+                                    <span class="wishlist-count badge" id="wishlist-count">{{wishlistCount}}</span>
+                                    {{/if}}
+                                </div>
+                                <p>Wishlist</p>
+                            </a>
+                        </div><!-- End .compare-dropdown -->
+
+                        <div class="dropdown cart-dropdown">
+                            <a href="/cart" class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false" data-display="static">
+                                <div class="icon">
+                                    <i class="icon-shopping-cart"></i>
+                                      {{#if userName}}
+                                    <span class=" cart-count badge badge-success " id="cart-count">{{cartCount}}</span>
+                                    {{/if}}
+                                </div>
+                                <p>Cart</p>
+                            </a>
+
+                            
+                        </div><!-- End .cart-dropdown -->
+                    </div><!-- End .header-right -->
+                </div><!-- End .container -->
+            </div><!-- End .header-middle -->
+
+            <div class="header-bottom sticky-header">
+                <div class="container">
+                    
+                    <div class="header-center ">
+                        <nav class="main-nav ">
+                            <ul class="menu sf-arrows">
+                                <li >
+                                    <a href="/" >Home</a>
+
+                                    
+                                </li>
+                               
+                                <li>
+                                    <a href="/product/?page=1" >Product</a>
+                                </li>
+                               
+                                {{#if userName}}
+                                  <li>
+                                    <a href="/wallet" > My Account</a>
+ 
+                                </li>
+                                {{/if}}
+                            </ul><!-- End .menu -->
+                        </nav><!-- End .main-nav -->
+                    </div><!-- End .header-center -->
+
+                 
+                </div><!-- End .container -->
+            </div><!-- End .header-bottom -->
+        </header><!-- End .header -->
+
+        <script>
+    function sendData(e){
+
+        const productList=document.getElementById('productList')
+        productList.style.display="block"
+
+        let match=e.value.match(/^[a-zA-Z ]*/)
+        let match2=e.value.match(/[ ]*/)
+        if(match2[0]===e.value){
+            productList.innerHTML='';
+            return;
+        }
+        if (match[0]===e.value){
+                    fetch('searchProducts',{
+            method:'post',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({payload:e.value})
+        }).then(res=>res.json()).then(data=>{
+            let payload=data.payload;
+            productList.innerHTML= '';
+            if(payload.length < 1){
+                productList.innerHTML='<p>sorry.Nothing Found</p>';
+                return;
+
+            }
+            payload.forEach((item,index)=>{
+                if(index > 0)  productList.innerHTML+='<hr>';
+                productList.innerHTML+=`<a href="/product/${item._id}">
+                            <li style="display:flex">
+            <img src="/images/product/${item.img[0]}" style="width: 30px; height: 28px; margin-top:4px"> &nbsp; &nbsp; &nbsp;
+            <p class="text-black">${item.laptops}</p></li></a>`
+            })
+
+        
+        })
+        return;
+        }
+         productList.innerHTML= '';
+
+    }
+</script>

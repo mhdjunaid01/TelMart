@@ -1,0 +1,114 @@
+<main id="main" class="main">
+
+
+  <button type="" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModal{{this._id}}">Add To
+    Coupon </button>
+  <section class="section">
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="card">
+
+          <div class="card-body">
+            <h5 class="card-title text-center">Coupons</h5>
+
+            <!-- Default Tabs -->
+
+
+            <div class="tab-content pt-2" id="myTabjustifiedContent">
+
+              <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
+
+                <table class="table" id="table">
+                  <thead>
+                    <tr class="text-center bg-secondary">
+                      <th scope="col">Name</th>
+                      <th scope="col">Percentage</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Option</th>
+
+
+                    </tr>
+
+
+                  </thead>
+                  <tbody>
+                    {{#each coupon}}
+
+                    <tr class="text-center">
+
+                      <td>{{this.couponCode}}</td>
+                      <td>{{this.Percentage}}</td>
+                      <td>{{this.date}}</td>
+                      <!-- Button trigger modal -->
+                      <td> <a href="/admin/removeCoupon/{{this._id}}" class="btn btn-primary">remove coupon</a></td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title " id="exampleModalLabel">Add Coupon</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="/admin/addcoupon" method="post">
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label"></label>
+                          <input type="text" class="form-control" id="percentage" name="couponCode"
+                            placeholder="Enter coupon CODE">
+                        </div>
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label"></label>
+                          <input type="date" class="form-control" id="percentage" name="date" placeholder="DATE">
+                        </div>
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label"></label>
+                          <input type="number" class="form-control" id="percentage" name="Percentage"
+                            placeholder="Enter Percentage Of coupon">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- End Default Tabs -->
+
+
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </section>
+
+</main><!-- End #main -->
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf8"
+  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+
+<script>
+
+ $('table').dataTable( {
+  paginate: false,
+  scrollY: 300
+} );
+</script>
+
+
+<!-- ======= Footer ======= -->

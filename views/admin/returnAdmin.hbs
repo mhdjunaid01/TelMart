@@ -1,0 +1,86 @@
+<main id="main" class="main">
+
+  <section>
+    <div class="container ms-auto">
+      <div class="row m-4 d-flex justify-content-end">
+        
+      </div>
+      <div>
+
+
+        <table class="table" id="table">
+          <thead>
+            <tr class="text-center bg-secondary">
+
+              <th scope="col"> name</th>
+              <th scope="col">product name</th>
+              <th scope="col">quantity</th>
+              <th scope="col">reason</th>
+              <th scope="col">price</th>
+              <th scope="col">Image</th>
+            
+              <th scope="col">Option</th>
+      
+            </tr>
+          </thead>
+          <tbody>
+            {{#each returnProduct}}
+            <tr class="text-center">
+
+              <td>{{this.orderDetails.deleveryDetails.firstname}}</td>
+              <td>{{this.productDetails.phone}}</td>
+              <td>{{this.orderDetails.products.[0].quantity}}</td>
+              <td>{{this.complaint}}</td>
+              <td><span>₹</span>&nbsp;{{this.orderDetails.totalAmount}}</td>
+              <td>
+                <img src="/images/product/{{this.productDetails.img.[0]}}" style="height: 80px; width: 60px;" alt="">
+              </td>  
+             
+              <td>
+                
+                  <button class="btn btn-secondary" type="button"
+                      onclick="returnApproved('{{this.orderDetails._id}}','{{this.productDetails._id}}')">return-Approved</button>
+          
+              </td>
+
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+{{!--
+<script type="text/javascript"> --}}
+
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf8"
+  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+
+<script>
+
+ $('table').dataTable( {
+  paginate: false,
+  scrollY: 300
+} );
+
+function returnApproved(orderId,ProductId){
+  $.ajax({
+      url: '/admin/changeOrderStatus',
+      data: {
+        status: 'return-Approved',
+        orderId: orderId,
+        ProductId: ProductId
+  },
+   method: 'post',
+      success: () => {
+        location.reload()
+      }
+  
+})
+}
+</script>
+

@@ -1,0 +1,252 @@
+<style>
+    @import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+body {
+  margin:0;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+</style>
+<main class="main">
+    <!--Hey! This is the original version
+of Simple CSS Waves-->
+
+<div class="header">
+
+
+<div class="container">
+
+                 
+            <div class="form-box mt-2">
+              
+                <div class="form-tab">
+                    
+                    <ul class="nav nav-pills nav-fill" role="tablist">
+                      <div >
+                        <a href="/" class="logo mb-4" style="width: 100px;">
+                            <img src="/assets/images/Screenshot 2022-11-07 190743.png" alt="Molla Logo" width="105" height="15">
+                        </a>
+                    </div><!-- End .header-left -->
+                        <li class="nav-item text-justify" style="margin-right:80px;">
+                            <a class="nav-link" id="userLogin" data-toggle="tab" href="/login" role="tab"
+                                aria-controls="signin-2" aria-selected="false">LOGIN</a>
+                        </li>
+
+                    </ul>
+                    {{#if loginErr}}
+                    <p class="text-danger">{{loginErr}}</p>
+                    {{/if}}
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+
+
+                        </div><!-- .End .tab-pane -->
+                        <div class="tab-pane fade show active" id="register-2" role="tabpanel"
+                            aria-labelledby="register-tab-2">
+                            <form action="/login" method="post" id="userLogin" onsubmit="return validation()">
+                                <div class="form-group">
+                                    <label for="email"> Enter Username or Email *</label>
+                                    <input type="text" class="form-control" id="Email" name="email"
+                                        onkeyup="validEmail()">
+
+                                    <span id="email" class="text-danger"></span>
+                                </div><!-- End .form-group -->
+
+                                <div class="form-group">
+                                    <label for="singin-password-2">Password *</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        onkeyup="validPassword()">
+
+                                    <span id="passwords" class="text-danger"></span>
+                                </div><!-- End .form-group -->
+
+                                <div class="form-footer">
+                                    <button type="submit" class="btn btn-outline-primary-2">
+                                        <span>LOG IN</span>
+                                        <i class="icon-long-arrow-right"></i>
+                                    </button>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <a href="/otp" class="btn text-white bg-dark" style="text-decoration:none;">Login With Otp</a>
+
+                                    </div>
+
+                                    <a href="/signup" class="forgot-link" style="color:black ;">Create new account</a>
+                                </div><!-- End .form-footer -->
+                            </form>
+                        </div><!-- .End .tab-pane -->
+                    </div><!-- End .tab-content -->
+                </div><!-- End .form-tab -->
+            </div><!-- End .form-box -->
+        </div><!-- End .container -->
+
+<!--Waves Container-->
+<div>
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
+<!--Waves end-->
+
+</div>
+<!--Header ends-->
+
+<!--Content starts-->
+<div class="content flex ">
+  <p style="margin-bottom: 50px;">TelMart </p>
+</div>
+<!--Content ends-->
+
+    
+        
+   
+    
+</main><!-- End .main -->
+
+
+<script>
+
+    var errorEmail = document.getElementById('email')
+    var errorPassword = document.getElementById('passwords')
+
+    function validEmail() {
+        const email = document.getElementById('Email').value
+        if (email == "") {
+            errorEmail.innerHTML = "enter you email address"
+            return false
+        }
+        if (!email.match(/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/)) {
+            errorEmail.innerHTML = 'enter a proper email address'
+            return false
+        }
+        errorEmail.innerHTML = null
+        return true
+    }
+    function validPassword() {
+        const psd = document.getElementById('password').value
+        if (psd == "") {
+            errorPassword.innerHTML = "enter a password"
+            return false
+        }
+        if (psd.length < 3) {
+
+            errorPassword.innerHTML = "password should be more than five characters"
+            return false
+        }
+        errorPassword.innerHTML = null
+        return true
+    }
+    function validation() {
+        if (!validEmail() || !validPassword()) {
+            return false
+        }
+        return true
+    }
+</script>

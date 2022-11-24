@@ -1,0 +1,174 @@
+<div class="cta cta-separator mb-5 container">
+    <div class="row">
+
+        {{!-- {{#each userDetails }} --}}
+
+
+
+        <div class="container">
+            <div class="row">
+                <aside class="col-6 " style="margin-top: 120px;">
+                    <div class="summary">
+
+                        <div>
+                            <h5>User Name : <small> {{userDetails.name}} </small></h5>
+                        </div>
+
+                        <div>
+                            <h5>email : <small> {{userDetails.email}} </small></h5>
+                        </div>
+
+                        <div>
+                            <h5>Phone : <small> {{userDetails.number}} </small></h5>
+                        </div>
+
+
+
+                    </div><!-- End .summary -->
+                </aside><!-- End .col-lg-3 -->
+                <div class="col-6">
+
+
+                    <div class="cta-wrapper text-center">
+                        <h4>User Profile</h4>
+                        {{#if errMessage}}
+                        <div class="text-center">
+                            <p style="color: #FCB941 ;">{{errMessage}}</p>
+                        </div>
+                        {{/if}}
+
+
+
+
+                        <form action="/saveChanges" method="post" onsubmit="return check()">
+                            <span id="name" style="color:#FCB941 ;"></span>
+                            <input type="text" value="{{userDetails.name}}" class="form-control form-control-rounded"
+                                id="Name" onkeyup="validateName()" placeholder="Username" name="name">
+
+
+
+
+                            <span id="email" style="color:#FCB941 ;"></span>
+                            <input type="email" value="{{userDetails.email}}" class="form-control form-control-rounded"
+                                id="Email" onkeyup="validEmail()" placeholder="Email" name="email">
+
+
+
+
+                            <span id="phonenumbers" style="color:#FCB941 ;"></span>
+                            <input type="text" value="{{userDetails.number}}" class="form-control form-control-rounded"
+                                id="phonenumber" onkeyup="validPhoneumber()" placeholder="Phone Number" name="number">
+
+
+
+                            <button class="btn btn-primary" type="submit"> <span>Save Changes</span></button>
+                        </form>
+
+                    </div><!-- End .cta-wrapper -->
+                </div><!-- End .col-lg-6 -->
+
+
+            </div>
+        </div>
+
+        {{!--
+        <div class="col-12 col-md-8 justify-content-center">
+            <div class="cta-wrapper text-center">
+
+                {{#if errMessage}}
+                <div class="text-center">
+                    <p style="color: #FCB941 ;">{{errMessage}}</p>
+                </div>
+                {{/if}}
+
+
+
+
+
+
+
+            </div><!-- End .cta-wrapper -->
+
+
+        </div><!-- End .col-lg-6 --> --}}
+
+        {{!-- {{/each}} --}}
+        <div class="container" style="margin-left:60% ;">
+            <a href="/editAddress"> <button class="btn btn-primary"><span>Address Management</span><i
+                        class="icon-long-arrow-right"></i></button></a>
+        </div>
+
+
+    </div><!-- End .row -->
+</div><!-- End .cta -->
+
+
+
+
+<script>
+    var errorName = document.getElementById('name')
+    var errorEmail = document.getElementById('email')
+    var errorPhonenumber = document.getElementById('phonenumbers')
+    function validateName() {
+        const name = document.getElementById('Name').value;
+        if (name == "") {
+            errorName.innerHTML = 'Enter your Name'
+            return false
+        }
+        if (!name.match(/^[a-zA-Z ]*$/)) {
+            errorName.innerHTML = 'Number are not allowed'
+            return false
+        }
+        if (name.match(/^[ ]*$/)) {
+            errorName.innerHTML = 'enter a valid name'
+            return false
+        }
+        errorName.innerHTML = null
+        return true
+    }
+    function validEmail() {
+        const email = document.getElementById('Email').value
+        if (email == "") {
+            errorEmail.innerHTML = "enter you email address"
+            return false
+        }
+        if (!email.match(/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/)) {
+            errorEmail.innerHTML = 'enter a proper email address'
+            return false
+        }
+        errorEmail.innerHTML = null
+        return true
+    }
+
+
+    function validPhoneumber() {
+        const mob = document.getElementById('phonenumber').value
+        if (mob == "") {
+            errorPhonenumber.innerHTML = "enter a phonenumber"
+            return false
+        }
+        if (mob.length < 10 || !mob.match(/^\d*$/)) {
+            errorPhonenumber.innerHTML = "Please Enter the valide phone number"
+            return false
+        }
+        errorPhonenumber.innerHTML = null
+        return true
+    }
+
+    function check() {
+        let validatearray = [!validateName(), !validEmail(), !validPhoneumber()]
+
+        return validatearray.every(validation)
+
+
+    }
+
+
+
+    function validation() {
+        if (!validateName() || !validEmail() || !validPhoneumber()) {
+            return false
+        }
+        return true
+    }
+</script>

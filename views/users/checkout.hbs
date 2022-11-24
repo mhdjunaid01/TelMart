@@ -1,0 +1,1099 @@
+<style>
+    :root {
+  --primary: #275EFE;
+  --primary-light: #7699FF;
+  --dark: #1C212E;
+  --grey-dark: #3F4656;
+  --grey: #6C7486;
+  --grey-light: #CDD9ED;
+  --white: #FFF;
+  --green: #16BF78;
+  --sand: #DCB773;
+  --sand-light: #EDD9A9;
+}
+.order {
+  appearance: none;
+  border: 0;
+  background: var(--dark);
+  position: relative;
+  height: 63px;
+  width: 240px;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 32px;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.order span {
+  --o: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 19px;
+  line-height: 24px;
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  opacity: var(--o);
+  transition: opacity 0.3s ease;
+}
+.order span.default {
+  transition-delay: 0.3s;
+}
+.order span.success {
+  --offset: 16px;
+  --o: 0;
+}
+.order span.success svg {
+  width: 12px;
+  height: 10px;
+  display: inline-block;
+  vertical-align: top;
+  fill: none;
+  margin: 7px 0 0 4px;
+  stroke: var(--green);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16px;
+  stroke-dashoffset: var(--offset);
+  transition: stroke-dashoffset 0.3s ease;
+}
+.order:active {
+  transform: scale(0.96);
+}
+.order .lines {
+  opacity: 0;
+  position: absolute;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+  width: 6px;
+  top: 30px;
+  left: 100%;
+  box-shadow: 15px 0 0 var(--white), 30px 0 0 var(--white), 45px 0 0 var(--white), 60px 0 0 var(--white), 75px 0 0 var(--white), 90px 0 0 var(--white), 105px 0 0 var(--white), 120px 0 0 var(--white), 135px 0 0 var(--white), 150px 0 0 var(--white), 165px 0 0 var(--white), 180px 0 0 var(--white), 195px 0 0 var(--white), 210px 0 0 var(--white), 225px 0 0 var(--white), 240px 0 0 var(--white), 255px 0 0 var(--white), 270px 0 0 var(--white), 285px 0 0 var(--white), 300px 0 0 var(--white), 315px 0 0 var(--white), 330px 0 0 var(--white);
+}
+.order .back, .order .box {
+  --start: var(--white);
+  --stop: var(--grey-light);
+  border-radius: 2px;
+  background: linear-gradient(var(--start), var(--stop));
+  position: absolute;
+}
+.order .truck {
+  width: 60px;
+  height: 41px;
+  left: 100%;
+  z-index: 1;
+  top: 11px;
+  position: absolute;
+  transform: translateX(24px);
+}
+.order .truck:before, .order .truck:after {
+  --r: -90deg;
+  content: '';
+  height: 2px;
+  width: 20px;
+  right: 58px;
+  position: absolute;
+  display: block;
+  background: var(--white);
+  border-radius: 1px;
+  transform-origin: 100% 50%;
+  transform: rotate(var(--r));
+}
+.order .truck:before {
+  top: 4px;
+}
+.order .truck:after {
+  --r: 90deg;
+  bottom: 4px;
+}
+.order .truck .back {
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 41px;
+  z-index: 1;
+}
+.order .truck .front {
+  overflow: hidden;
+  position: absolute;
+  border-radius: 2px 9px 9px 2px;
+  width: 26px;
+  height: 41px;
+  left: 60px;
+}
+.order .truck .front:before, .order .truck .front:after {
+  content: '';
+  position: absolute;
+  display: block;
+}
+.order .truck .front:before {
+  height: 13px;
+  width: 2px;
+  left: 0;
+  top: 14px;
+  background: linear-gradient(var(--grey), var(--grey-dark));
+}
+.order .truck .front:after {
+  border-radius: 2px 9px 9px 2px;
+  background: var(--primary);
+  width: 24px;
+  height: 41px;
+  right: 0;
+}
+.order .truck .front .window {
+  overflow: hidden;
+  border-radius: 2px 8px 8px 2px;
+  background: var(--primary-light);
+  transform: perspective(4px) rotateY(3deg);
+  width: 22px;
+  height: 41px;
+  position: absolute;
+  left: 2px;
+  top: 0;
+  z-index: 1;
+  transform-origin: 0 50%;
+}
+.order .truck .front .window:before, .order .truck .front .window:after {
+  content: '';
+  position: absolute;
+  right: 0;
+}
+.order .truck .front .window:before {
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background: var(--dark);
+}
+.order .truck .front .window:after {
+  width: 14px;
+  top: 7px;
+  height: 4px;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.14);
+  transform: skewY(14deg);
+  box-shadow: 0 7px 0 rgba(255, 255, 255, 0.14);
+}
+.order .truck .light {
+  width: 3px;
+  height: 8px;
+  left: 83px;
+  transform-origin: 100% 50%;
+  position: absolute;
+  border-radius: 2px;
+  transform: scaleX(0.8);
+  background: #f0dc5f;
+}
+.order .truck .light:before {
+  content: '';
+  height: 4px;
+  width: 7px;
+  opacity: 0;
+  transform: perspective(2px) rotateY(-15deg) scaleX(0.94);
+  position: absolute;
+  transform-origin: 0 50%;
+  left: 3px;
+  top: 50%;
+  margin-top: -2px;
+  background: linear-gradient(90deg, #f0dc5f, rgba(240, 220, 95, 0.7), rgba(240, 220, 95, 0));
+}
+.order .truck .light.top {
+  top: 4px;
+}
+.order .truck .light.bottom {
+  bottom: 4px;
+}
+.order .box {
+  --start: var(--sand-light);
+  --stop: var(--sand);
+  width: 21px;
+  height: 21px;
+  right: 100%;
+  top: 21px;
+}
+.order .box:before, .order .box:after {
+  content: '';
+  top: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.order .box:before {
+  height: 3px;
+  margin-top: -1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.order .box:after {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.15);
+}
+.order.animate .default {
+  --o: 0;
+  transition-delay: 0s;
+}
+.order.animate .success {
+  --offset: 0;
+  --o: 1;
+  transition-delay: 7s;
+}
+.order.animate .success svg {
+  transition-delay: 7.3s;
+}
+.order.animate .truck {
+  animation: truck 10s ease forwards;
+}
+.order.animate .truck:before {
+  animation: door1 2.4s ease forwards 0.3s;
+}
+.order.animate .truck:after {
+  animation: door2 2.4s ease forwards 0.6s;
+}
+.order.animate .truck .light:before, .order.animate .truck .light:after {
+  animation: light 10s ease forwards;
+}
+.order.animate .box {
+  animation: box 10s ease forwards;
+}
+.order.animate .lines {
+  animation: lines 10s ease forwards;
+}
+@keyframes truck {
+  10%, 30% {
+    transform: translateX(-164px);
+  }
+  40% {
+    transform: translateX(-104px);
+  }
+  60% {
+    transform: translateX(-224px);
+  }
+  75%, 100% {
+    transform: translateX(24px);
+  }
+}
+@keyframes lines {
+  0%, 30% {
+    opacity: 0;
+    transform: scaleY(0.7) translateX(0);
+  }
+  35%, 65% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(0.7) translateX(-400px);
+  }
+}
+@keyframes light {
+  0%, 30% {
+    opacity: 0;
+    transform: perspective(2px) rotateY(-15deg) scaleX(0.88);
+  }
+  40%, 100% {
+    opacity: 1;
+    transform: perspective(2px) rotateY(-15deg) scaleX(0.94);
+  }
+}
+@keyframes door1 {
+  30%, 50% {
+    transform: rotate(32deg);
+  }
+}
+@keyframes door2 {
+  30%, 50% {
+    transform: rotate(-32deg);
+  }
+}
+@keyframes box {
+  8%, 10% {
+    transform: translateX(40px);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(112px);
+    opacity: 1;
+  }
+  26% {
+    transform: translateX(112px);
+    opacity: 0;
+  }
+  27%, 100% {
+    transform: translateX(0px);
+    opacity: 0;
+  }
+}
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: inherit;
+}
+*:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  min-height: 100vh;
+  font-family: Roboto, Arial;
+  display: flow-root;
+  justify-content: center;
+  align-items: center;
+  background: #E4ECFA;
+}
+body .dribbble {
+  position: fixed;
+  display: block;
+  right: 20px;
+  bottom: 20px;
+}
+body .dribbble img {
+  display: block;
+  height: 28px;
+}
+
+</style>
+
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">Checkout<span>Shop</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+
+
+        <div class="checkout">
+            <div class="container">
+                <div class="cart-bottom">
+                    <div class="cart-discount">
+                        {{!-- <form action="/check-coupen" id="" method="post"> --}}
+                            <span id="errormsg" style="color: red;"></span>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cuoponcode" name="coupen"
+                                    placeholder="coupon code">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary-2"
+                                        onclick="addcoupon(document.getElementById('cuoponcode').value)"><i
+                                            class="icon-long-arrow-right"></i></button>
+                                </div><!-- .End .input-group-append -->
+                            </div><!-- End .input-group -->
+                            {{!--
+                        </form> --}}
+                    </div><!-- End .cart-discount -->
+                </div>
+                <form id="checkout-form">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>First Name *</label>
+                                    <input type="text" id="firstname" name="firstname" class="form-control"
+                                        onkeyup="validateName()">
+
+                                    <span id="name" class="text-danger"></span>
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    <label>Last Name *</label>
+                                    <input type="text" id="lastname" name="lastname" class="form-control"
+                                        onkeyup="validatelastName()">
+                                    <span id="LastName" class="text-danger"></span>
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+
+                            <label>Country *</label>
+                            <input type="text" id="country" name="country" class="form-control"
+                                onkeyup="validateCountry()">
+                            <span id="Country" class="text-danger"></span>
+                            <div>
+                                <label>Street address *</label>
+                                <input type="text" class="form-control" id="street" name="streetname"
+                                    placeholder="Street name" onkeyup=" validatestreet()">
+                                <span id="Street" class="text-danger"></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label> City *</label>
+                                    <input type="text" id="city" name="city" class="form-control"
+                                        onkeyup="validateCity()">
+                                    <span id="City" class="text-danger"></span>
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    <label>State *</label>
+                                    <input type="text" id="state" name="state" class="form-control"
+                                        onkeyup=" validateState()">
+                                    <span id="State" class="text-danger"></span>
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Postcode *</label>
+                                    <input type="text" id="Pincode" name="pincode" class="form-control"
+                                        onkeyup="validpincode()">
+                                    <span id="pincode" class="text-danger"></span>
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    <label>Phone *</label>
+                                    <input type="tel" id="phonenumber" name="mobile" class="form-control"
+                                        onkeyup="validPhoneNumber()">
+                                    <input type="text" name="userId" value="{{userId}}" hidden>
+                                    <input type="text" name="status" value="confirmed" hidden>
+                                    <span id="phonenumbers" class="text-danger"></span>
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+
+                            <label>Email address *</label>
+                            <input type="email" id="Email" name="email" class="form-control" onkeyup="validEmail()">
+                            <span id="email" class="text-danger"></span>
+
+                            <input type="text" name="discountPrice" value="" hidden>
+
+
+                            {{!-- <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
+                                <label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
+                            </div><!-- End .custom-checkbox -->
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
+                                <label class="custom-control-label" for="checkout-diff-address">Ship to a different
+                                    address?</label>
+                            </div><!-- End .custom-checkbox --> --}}
+
+                            <label>Order notes (optional)</label>
+                            <div class="card">
+                                <div class="card-header" id="heading-2">
+                                    <h2 class="card-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2"
+                                            aria-expanded="false" aria-controls="collapse-2">
+                                            Select Address
+                                        </a>
+                                    </h2>
+                                </div><!-- End .card-header -->
+                                <div id="collapse-2" class="collapse" aria-labelledby="heading-2"
+                                    data-parent="#accordion-1">
+
+                                    <div class="row">
+                                        <div class="container">
+                                            {{#each address}}
+                                            <div class="card-body col-lg-9">
+                                                <div>
+
+
+                                                    <p class="card-text text-black">
+                                                        {{this.firstname}}</p>
+                                                    <p class="card-text text-black">
+                                                        {{this.streetname}}</p>
+                                                    <p class="card-text text-black">{{this.city}}
+                                                    </p>
+                                                    <p class="card-text text-black">{{this.state}}
+                                                    </p>
+                                                    <p class="card-text text-black">{{this.mobile}}
+                                                    </p>
+                                                    <span>
+                                                        <button type="button" class="btn btn-primary"
+                                                            onclick="settingAddress('{{this._id}}')">
+                                                            <input type="radio" name="selectaAddress">Choose
+                                                            this</button>
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+                                            {{/each }}
+
+                                        </div><!-- End .card-body -->
+                                    </div><!-- End .collapse -->
+                                </div><!-- End .card -->
+
+                            </div><!-- End .accordion -->
+                        </div><!-- End .col-lg-9 -->
+                        <aside class="col-lg-3">
+                            <div class="summary">
+
+                                <h3 class="summary-title">Your Order</h3><!-- End .summary-title -->
+
+                                <table class="table table-summary">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {{#each products}}
+                                        <tr>
+
+                                            <div>
+                                                <td><br><a href="#">{{this.product.phone}}</a><br>Qty&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;({{this.quantity}}) </td>
+
+
+                                            </div>
+
+
+                                            <td><span>Rs.{{this.product.price}}</span></td>
+
+                                        </tr>
+                                        {{/each}}
+                                        {{!-- hidden details to be passed --}}
+
+
+
+                                        <tr class="summary-subtotal">
+                                            <td>Subtotal:</td>
+                                            <td>Rs.{{total}}</td>
+                                        </tr><!-- End .summary-subtotal -->
+                                        <tr>
+                                            <td>Coupon Discount:</td>
+                                            <td id="discountPrice"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shipping:</td>
+                                            <td>Free shipping</td>
+                                        </tr>
+                                        <tr class="summary-total">
+                                            <td>Total:</td>
+
+                                            <td id='grandTotal'>Rs. <div id="total">{{total}}</div>
+                                            </td>
+
+                                        </tr><!-- End .summary-total -->
+                                    </tbody>
+
+                                </table><!-- End .table table-summary -->
+
+                                <h3 class="summary-title">payment Method</h3><!-- End .summary-title -->
+
+                                <div class="accordion-summary" id="accordion-payment">
+
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-3">
+                                            <h2 class="card-title">
+                                                <label for="">
+                                                    <input type="radio" name="paymentMethod" value="COD" checked>Cash on
+                                                    delivery
+
+                                                </label>
+
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-3" class="collapse" aria-labelledby="heading-3"
+                                            data-parent="#accordion-payment">
+
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-4">
+                                            <h2 class="card-title">
+                                                <label for="">
+                                                    <input type="radio" name="paymentMethod" value="ONLINE">Razorpay
+
+                                                </label>
+
+
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-4" class="collapse" aria-labelledby="heading-4"
+                                            data-parent="#accordion-payment">
+
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-4">
+                                            <h2 class="card-title">
+                                                <label for="">
+                                                    <input type="radio" name="paymentMethod" value="PAYPAL">Paypal
+
+                                                </label>
+
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-4" class="collapse" aria-labelledby="heading-4"
+                                            data-parent="#accordion-payment">
+
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                </div><!-- End .accordion -->
+                                {{!-- {{#if loggERR}} --}}
+
+
+                                {{!-- <button type="submit"
+                                    class="checkout-form btn btn-outline-primary-2 btn-order btn-block"
+                                    onclick="return validation()">
+                                    <span class="btn-text">Place Order</span>
+                                    <span class="btn-hover-text">Proceed to Checkout</span>
+                                </button> --}}
+
+                                <div>
+                                  <button class="order" type="submit"
+                                    class="checkout-form btn btn-outline-primary-2 btn-order btn-block"
+                                    onclick="return validation()"><span class="default">Complete Order</span><span
+                                        class="success">Order Placed<svg viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg></span>
+                                    <div class="box"></div>
+                                    <div class="truck">
+                                        <div class="back"></div>
+                                        <div class="front">
+                                            <div class="window"></div>
+                                        </div>
+                                        <div class="light top"></div>
+                                        <div class="light bottom"></div>
+                                    </div>
+                                    <div class="lines"></div>
+                                </button>
+                                </div>
+                                
+                                {{!-- {{/if}} --}}
+                            </div><!-- End .summary -->
+                            <div class="page-content">
+
+
+                                <div class="container">
+
+
+
+
+                                    <div class="row" hidden>
+
+                                        <div class="col-lg-12">
+                                            <div class="accordion" id="accordion-1">
+                                                <div class="card">
+                                                    <div class="card-header" id="heading-1">
+                                                        <h2 class="card-title">
+                                                            <a role="button" data-toggle="collapse" href="#collapse-1"
+                                                                aria-expanded="true" aria-controls="collapse-1">
+
+                                                                {{!-- {{this.address.name}} --}}
+                                                            </a>
+                                                        </h2>
+                                                    </div><!-- End .card-header -->
+                                                  
+                                                </div><!-- End .card -->
+
+
+                                            </div><!-- End .col-md-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .container -->
+                                </div><!-- End .page-content -->
+                                          
+                            </div>
+                        </aside><!-- End .col-lg-3 -->
+                    </div><!-- End .row -->
+
+                </form>
+
+
+            </div><!-- End .container -->
+
+        </div><!-- End .checkout -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->
+
+
+
+
+
+
+
+
+<script>
+    $('.order').click(function(e) {
+    let button = $(this);
+
+    if(!button.hasClass('animate')) {
+        button.addClass('animate');
+        setTimeout(() => {
+            button.removeClass('animate');
+        }, 10000);
+    }
+
+});
+
+    function addcoupon(coupon) {
+        $.ajax({
+            url: '/check-coupen',
+            method: 'post',
+            data: {
+                coupon
+            },
+            success: (response) => {
+
+                if (response.invalid) {
+                    document.getElementById('errormsg').innerHTML = 'coupon invalid'
+
+                    setTimeout(() => {
+                        document.getElementById('errormsg').innerHTML = ""
+                    }, 3000)
+                } else if (response.couponPrice) {
+                    document.getElementById('total').innerHTML = response.couponPrice
+                    document.getElementById('discountPrice').innerHTML = response.discountPrice
+                } else if (response.expired) {
+                    document.getElementById('errormsg').innerHTML = 'coupon expired'
+
+                    setTimeout(() => {
+                        document.getElementById('errormsg').innerHTML = ""
+                    }, 3000)
+
+                }
+            }
+        })
+    }
+
+    function settingAddress(id) {
+        $.ajax({
+            url: '/selected-address',
+            data: {
+                addressId: id
+            },
+            method: 'post',
+            success: (selectedAddress) => {
+                console.log('llllllllllllll')
+                console.log(selectedAddress)
+
+                document.getElementById('firstname').value = selectedAddress.firstname
+                document.getElementById('lastname').value = selectedAddress.lastname
+                document.getElementById('phonenumber').value = selectedAddress.mobile
+                document.getElementById('Email').value = selectedAddress.email
+                document.getElementById('street').value = selectedAddress.streetname
+                document.getElementById('country').value = selectedAddress.country
+                document.getElementById('city').value = selectedAddress.city
+                document.getElementById('state').value = selectedAddress.state
+                document.getElementById('Pincode').value = selectedAddress.pincode
+            }
+        })
+
+    }
+
+</script>
+
+
+
+<script>
+    var errorName = document.getElementById('name')
+    var errorlastName = document.getElementById('Lastname')
+    var errorEmail = document.getElementById('email')
+    var errorPassword = document.getElementById('passwords')
+    var errorPhonenumber = document.getElementById('phonenumbers')
+    var errorpincode = document.getElementById('pincode')
+    var errorcountry = document.getElementById('Country')
+    var errorstreet = document.getElementById('Street')
+    var errorcity = document.getElementById('City')
+    var errorstate = document.getElementById('State')
+
+    function validateName() {
+        const name = document.getElementById('firstname').value;
+        if (name == "" || name == null) {
+            errorName.innerHTML = 'Enter your Name'
+            return false
+        }
+        if (!name.match(/^[a-zA-Z ]*$/)) {
+            errorName.innerHTML = 'Number are not allowed'
+            return false
+        }
+        if (name.match(/^[ ]*$/)) {
+            errorName.innerHTML = 'Enter your valid name'
+            return false
+        }
+        errorName.innerHTML = null
+        return true
+    }
+    function validatelastName() {
+        const lastname = document.getElementById('lastname').value;
+        if (lastname == "" || lastname == null) {
+            errorlastName.innerHTML = 'Enter your  Last Name'
+            return false
+        }
+        if (!lastname.match(/^[a-zA-Z ]*$/)) {
+            errorlastName.innerHTML = 'Number are not allowed'
+            return false
+        }
+        if (lastname.match(/^[ ]*$/)) {
+            errorlastName.innerHTML = 'Enter your valid Last Name'
+            return false
+        }
+        errorlastName.innerHTML = null
+        return true
+    }
+    function validEmail() {
+        const email = document.getElementById('Email').value
+        if (email == "") {
+            errorEmail.innerHTML = "Enter you email address"
+            return false
+        }
+        if (!email.match(/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/)) {
+            errorEmail.innerHTML = 'Enter a proper email address'
+            return false
+        }
+        errorEmail.innerHTML = null
+        return true
+    }
+    function validPassword() {
+        const psd = document.getElementById('password').value
+        if (psd == "") {
+            errorPassword.innerHTML = "Enter a password"
+            return false
+        }
+        if (psd.length < 5) {
+
+            errorPassword.innerHTML = "password should be more than five characters"
+            return false
+        }
+        errorPassword.innerHTML = null
+        return true
+    }
+    function validPhoneNumber() {
+        const mob = document.getElementById('phonenumber').value
+        if (mob == "") {
+            errorPhonenumber.innerHTML = "Enter a phonenumber"
+            return false
+        }
+        if (mob.length < 10 || !mob.match(/^\d*$/)) {
+            errorPhonenumber.innerHTML = "Please Enter the valide phone number"
+            return false
+        }
+        errorPhonenumber.innerHTML = null
+        return true
+    }
+    function validpincode() {
+        const pincode = document.getElementById('Pincode').value
+        if (pincode == "") {
+            errorpincode.innerHTML = "Enter a Pincode"
+            return false
+        }
+        errorpincode.innerHTML = null
+        return true
+    }
+    function validatestreet() {
+        const street = document.getElementById('street').value;
+        if (street == "" || street == null) {
+            errorstreet.innerHTML = 'Enter your street'
+            return false
+        }
+        if (!street.match(/^[a-zA-Z ]*$/)) {
+            errorstreet.innerHTML = 'Number are not allowed'
+            return false
+        }
+        if (street.match(/^[ ]*$/)) {
+            errorstreet.innerHTML = 'Enter your valid street'
+            return false
+        }
+        errorstreet.innerHTML = null
+        return true
+    }
+
+    function validateCountry() {
+        const country = document.getElementById('country').value;
+        if (country == "" || country == null) {
+            errorcountry.innerHTML = 'Enter your Country'
+            return false
+        }
+        if (!country.match(/^[a-zA-Z ]*$/)) {
+            errorcountry.innerHTML = 'Number are not allowed'
+            return false
+        }
+        if (country.match(/^[ ]*$/)) {
+            errorcountry.innerHTML = 'Enter your valid country'
+            return false
+        }
+        errorcountry.innerHTML = null
+        return true
+    }
+
+    function validateState() {
+        const state = document.getElementById('state').value;
+        if (state == "" || state == null) {
+            errorstate.innerHTML = 'Enter your state'
+            return false
+        }
+        if (!state.match(/^[a-zA-Z ]*$/)) {
+            errorstate.innerHTML = 'Number are not allowed'
+            return false
+        }
+        if (state.match(/^[ ]*$/)) {
+            errorstate.innerHTML = 'Enter your valid state'
+            return false
+        }
+        errorstate.innerHTML = null
+        return true
+    }
+    function validateCity() {
+        const city = document.getElementById('city').value;
+        if (city == "" || city == null) {
+            errorcity.innerHTML = 'Enter your city'
+            return false
+        }
+        if (!city.match(/^[a-zA-Z ]*$/)) {
+            errorcity.innerHTML = 'Number are not allowed'
+            return false
+        }
+        if (city.match(/^[ ]*$/)) {
+            errorcity.innerHTML = 'Enter your valid city'
+            return false
+        }
+        errorcity.innerHTML = null
+        return true
+    }
+    function validation() {
+        if (!validateName() || !validEmail() || !validPassword() || !validPhoneNumber() || !validpincode() || !validateState() || !validateCountry() || !validatestreet() || !validateCity()) {
+            return false
+        }
+        return true
+    }
+
+</script>
+
+
+
+<script>
+
+
+    $("#checkout-form").submit((e) => {
+        e.preventDefault();
+        let total = $('#total').html()
+
+        $.ajax({
+            url: '/place-order/?total=' + total,
+            method: 'post',
+            data: $('#checkout-form').serialize(),
+            success: (response) => {
+
+
+                if (response.cod) {
+                    Swal.fire(
+                        'ORDER PLACED! ',
+                        '',
+                        'success'
+                    ).then((result) => {
+
+
+                        location.href = '/order';
+
+                    })
+                }
+                else if (response.paypal) {
+                    paypal()
+                }
+                else {
+
+                    alert(response)
+                    console.log(response)
+                    razorPayment(response.order)
+                }
+            }
+        })
+    })
+
+
+    function razorPayment(order) {
+
+        var options = {
+            "key": "rzp_test_Vz6HOjSXKK34Ap", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "TelMart",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature);
+                varifyPayment(response, order)
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+
+    function varifyPayment(payment, order) {
+        $.ajax({
+            url: '/verify-Payment',
+            data: {
+                payment,
+                order
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.status) {
+                    Swal.fire(
+                        'ORDER PLACED! ',
+                        '',
+                        'success'
+                    ).then((result) => {
+
+
+                        location.href = '/order';
+
+                    })
+
+                } else {
+                    alert('Payment failed')
+                }
+            }
+        })
+    }
+
+
+    function paypal() {
+
+        $.ajax({
+            url: '/pay',
+
+            method: 'post',
+
+
+            success: (response) => {
+                location.href = response
+            }
+        })
+    }
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

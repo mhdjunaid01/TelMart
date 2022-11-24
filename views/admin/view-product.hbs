@@ -1,0 +1,67 @@
+<main id="main" class="main">
+
+  <section>
+    <div class="container ms-auto">
+      <div class="row m-4 d-flex justify-content-end">
+        <a href="/admin/addproduct" style="width:auto" class="btn btn-success mt-5">Add procuct</a>
+      </div>
+      <div>
+
+
+        <table class="table" id="table">
+          <thead>
+            <tr class="text-center bg-secondary">
+
+              <th scope="col">Name</th>
+              <th scope="col">price</th>
+              <th scope="col">cetagory</th>
+              <th scope="col">Description</th>
+              <th scope="col">stock</th>
+              <th scope="col">Image</th>
+              <th scope="col">Option</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+            <tr class="text-center">
+
+              <td>{{this.phone}}</td>
+              <td><span>₹</span>&nbsp;{{this.price}}</td>
+              <td>{{this.productCategory.[0].category}}</td>
+              <td>{{this.description}}</td>
+              <td>{{this.stock}}</td>
+              <td>
+                <img src="/images/product/{{this.img.[0]}}" style="height: 80px; width: 60px;" alt="">
+              </td>
+
+              <td><a href="/admin/editproduct/{{this._id}}" class="btn btn-primary">Edit</a>
+
+                <a href="/admin/delete/{{this._id}}" class="btn btn-danger"
+                  onclick=" return confirm('Are sure to delete{{this.name}}')">Delete</a>
+              </td>
+
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+{{!--
+<script type="text/javascript"> --}}
+
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf8"
+  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+
+<script>
+
+ $('table').dataTable( {
+  paginate: false,
+  scrollY: 300
+} );
+</script>

@@ -1,0 +1,64 @@
+<style>
+	.product-price {
+		color: black;
+
+	}
+
+	.product-body {
+		background-color: gainsboro;
+	}
+</style>
+<main class="main">
+	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+		<div class="container">
+			<h1 class="page-title">ORDERS</h1>
+		</div><!-- End .container -->
+	</div><!-- End .page-header -->
+
+
+
+	<div class="products mb-3 mt-4">
+
+		<div class="row justify-content-center">
+			{{#each orders }}
+			<div class="col-6 col-md-4 col-lg-4">
+				<div class="product product-7 text-center">
+
+
+					<div class="product-body">
+
+						<h3 class="product-price"><a
+								href=""></a>Name:&nbsp;&nbsp;&nbsp;&nbsp;{{this.deleveryDetails.firstname}}</h3>
+						<!-- End .product-title -->
+
+
+						<div class="product-price">
+							Date:&nbsp;&nbsp;&nbsp;&nbsp;{{this.date}}
+						</div><!-- End .product-price -->
+						<div class="product-price">
+							status:&nbsp;&nbsp;&nbsp;&nbsp;{{this.status}}
+						</div><!-- End .product-price -->
+						<div class="product-price">
+							payment Method:&nbsp;&nbsp;&nbsp;&nbsp;{{this.paymentMethod}}
+						</div><!-- End .product-price -->
+
+						<div class="product-price">
+							Total amount:&nbsp;&nbsp;&nbsp;&nbsp;{{this.totalAmount}}
+						</div><!-- End .product-price -->
+						<div class="product-price">
+							<a href="/orderDetails/{{this._id}}" class="btn  btn-outline-primary-2"><i
+									class="icon-cart-plus"></i>Order Details </a>
+
+						</div><!-- End .product-price -->
+						
+
+
+
+
+					</div><!-- End .product-body -->
+				</div><!-- End .product -->
+			</div><!-- End .col-sm-6 col-lg-4 -->
+			{{/each}}
+		</div><!-- End .row -->
+	</div><!-- End .products -->
+</main><!-- End .main -->

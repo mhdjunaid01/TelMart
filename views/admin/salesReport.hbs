@@ -1,0 +1,278 @@
+<main id="main" class="main">
+    <span> <button class="btn btn-primary" onclick="weeklyReportPDF()"> download daily report</button></span>
+    <span><button class="btn btn-primary" onclick="monthlyReportPDF()">download monthlyreport</button></span>
+    <span><button class="btn btn-primary" onclick="yearlyReportPDF()">download yearly report</button></span>
+
+    <section>
+        <div class="container">
+            <div class="row m-4 d-flex justify-content-end">
+                {{!-- <a href="/admin/userlist" style="width:auto" class="btn btn-success mt-5">Add User</a> --}}
+            </div>
+            <div>
+
+                <table class="table" id="table">
+                    <thead>
+                        <tr class="text-center bg-secondary">
+
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each dailysalesreport}}
+                        <tr class="text-center">
+
+                            <td>{{this._id}}</td>
+                            <td>{{this.dailySaleAmount}}</td>
+                            <td>{{this.count}}</td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row m-4 d-flex justify-content-end">
+                {{!-- <a href="/admin/userlist" style="width:auto" class="btn btn-success mt-5">Add User</a> --}}
+            </div>
+            <div>
+
+                <table class="table" id="monthly-table">
+                    <thead>
+                        <tr class="text-center bg-secondary">
+
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each monthlySalesReport}}
+                        <tr class="text-center">
+
+                            <td>{{this._id}}</td>
+                            <td>{{this.monthlySalesamount}}</td>
+                            <td>{{this.count}}</td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+         <div class="container">
+            <div class="row m-4 d-flex justify-content-end">
+                {{!-- <a href="/admin/userlist" style="width:auto" class="btn btn-success mt-5">Add User</a> --}}
+            </div>
+            <div>
+                <table class="table" id="yearly-table">
+                    <thead>
+                        <tr class="text-center bg-secondary">
+
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each yearlySalesReport}}
+                        <tr class="text-center">
+
+                            <td>{{this._id}}</td>
+                            <td>{{this.yearlySalesAmonunt}}</td>
+                            <td>{{this.count}}</td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+    </section>
+</main>
+
+
+{{!--
+<script type="text/javascript"> --}}
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf8"
+  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+
+<script>
+
+ $('table').dataTable( {
+  paginate: false,
+  scrollY: 300
+} );
+</script>
+
+<style>
+    th,
+    td {
+        text - align: center;
+        border: 1 px solid black;
+        border - collapse: collapse;
+    }
+</style>
+<center>
+
+
+
+</center>
+<script type="text/javascript">
+
+    function weeklyReportPDF() {
+                    var doc = new jsPDF('p', 'pt', 'letter');
+    var htmlstring = '';
+    var tempVarToCheckPageHeight = 0;
+    var pageHeight = 0;
+    pageHeight = doc.internal.pageSize.height;
+    specialElementHandlers = {
+        // element with id of "bypass" - jQuery style selector  
+        '#bypassme': function (element, renderer) {
+                            // true = "handled elsewhere, bypass text extraction"  
+                            return true
+                        }
+                    };
+    margins = {
+        top: 150,
+    bottom: 60,
+    left: 40,
+    right: 40,
+    width: 600
+                    };
+    var y = 20;
+    doc.setLineWidth(2);
+    doc.text(200, y = y + 30, "Weekly Sales Report");
+    doc.autoTable({
+        html: '#weekly-table',
+    startY: 70,
+    theme: 'grid',
+    columnStyles: {
+        0: {
+        cellWidth: 180,
+                            },
+    1: {
+        cellWidth: 80,
+                            },
+    2: {
+        cellWidth: 80,
+                            },
+    {{!-- 3: {
+        cellWidth: 80,
+                            } --}}
+                        },
+    styles: {
+        minCellHeight: 40
+                        }
+                    })
+    doc.save('sales-weekly-report.pdf');
+                }
+
+
+    function monthlyReportPDF() {
+                    var doc = new jsPDF('p', 'pt', 'letter');
+    var htmlstring = '';
+    var tempVarToCheckPageHeight = 0;
+    var pageHeight = 0;
+    pageHeight = doc.internal.pageSize.height;
+    specialElementHandlers = {
+        // element with id of "bypass" - jQuery style selector  
+        '#bypassme': function (element, renderer) {
+                            // true = "handled elsewhere, bypass text extraction"  
+                            return true
+                        }
+                    };
+    margins = {
+        top: 150,
+    bottom: 60,
+    left: 40,
+    right: 40,
+    width: 600
+                    };
+    var y = 20;
+    doc.setLineWidth(2);
+    doc.text(200, y = y + 30, "Monthly Sales Report");
+    doc.autoTable({
+        html: '#monthly-table',
+    startY: 70,
+    theme: 'grid',
+    columnStyles: {
+        0: {
+        cellWidth: 180,
+                            },
+    1: {
+        cellWidth: 80,
+                            },
+    2: {
+        cellWidth: 80,
+                            },
+    {{!-- 3: {
+        cellWidth: 80,
+                            } --}}
+                        },
+    styles: {
+        minCellHeight: 40
+                        }
+                    })
+    doc.save('sales-monthly-report.pdf');
+                }
+
+
+    function yearlyReportPDF() {
+                    var doc = new jsPDF('p', 'pt', 'letter');
+    var htmlstring = '';
+    var tempVarToCheckPageHeight = 0;
+    var pageHeight = 0;
+    pageHeight = doc.internal.pageSize.height;
+    specialElementHandlers = {
+        // element with id of "bypass" - jQuery style selector  
+        '#bypassme': function (element, renderer) {
+                            // true = "handled elsewhere, bypass text extraction"  
+                            return true
+                        }
+                    };
+    margins = {
+        top: 150,
+    bottom: 60,
+    left: 40,
+    right: 40,
+    width: 600
+                    };
+    var y = 20;
+    doc.setLineWidth(2);
+    doc.text(200, y = y + 30, "Yearly Sales Report");
+    doc.autoTable({
+        html: '#yearly-table',
+    startY: 70,
+    theme: 'grid',
+    columnStyles: {
+        0: {
+        cellWidth: 180,
+                            },
+    1: {
+        cellWidth: 80,
+                            },
+    2: {
+        cellWidth: 80,
+                            },
+    {{!-- 3: {
+        cellWidth: 80,
+                            } --}}
+                        },
+    styles: {
+        minCellHeight: 40
+                        }
+                    })
+    doc.save('sales-yearly-report.pdf');
+                } 
+</script>
