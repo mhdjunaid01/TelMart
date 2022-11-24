@@ -4,9 +4,9 @@ const state={
 };
 let dbname;
 let url;
-
+//mongodb://127.0.0.1:27017
 module.exports.connect=function(done){
-    url='mongodb://127.0.0.1:27017';
+    url='mongodb+srv://admin:admin123@telmart.hvaxpa6.mongodb.net/?retryWrites=true&w=majority';
     dbname='user';
 
     MongoClient.connect(url,(err,data)=>{
