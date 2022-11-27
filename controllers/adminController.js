@@ -19,8 +19,8 @@ const verifylogin = (req, res, next) => {
     }
 };
 
-let home = (req, res) => {
-   
+let home = (req, res) => {  
+    
     adminHelpers.getDailyOrders().then((dailySales) => {
         adminHelpers.getMonthlyOrders().then((monthlySales) => {
             adminHelpers.getyearlyOrders().then((yearlySales) => {

@@ -10,6 +10,4 @@ module.exports={
     WISHLIST_COLLECTION:'wishlist',
     WALLET_COLLECTION:'wallet',
     RETURN_COLLECTION:'return'
-
-     
-};
+}; 

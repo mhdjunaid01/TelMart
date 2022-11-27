@@ -1,238 +1,236 @@
+<div class="page-wrapper">
 
-    <div class="page-wrapper">
+
+    <main class="main">
+
+        <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
+
+            <div class="container">
 
 
-        <main class="main">
-             
-            <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
-            
-                <div class="container">
-                 
-                 
-                 {{!-- <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {{!-- <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
                 </select> --}}
-                
-                    <div class="row justify-content-center">
-                        {{#each address }}
-                        <div class="col-6 col-md-4 col-lg-4">
-                            <div class="product product-7 text-center">
+
+                <div class="row justify-content-center">
+                    {{#each address }}
+                    <div class="col-6 col-md-4 col-lg-4">
+                        <div class="product product-7 text-center">
 
 
-                                <div class="product-body">
+                            <div class="product-body">
 
-                                    <h3 class="product-price"><a href=""></a>&nbsp;&nbsp;&nbsp;&nbsp;{{this.firstname}}
-                                    </h3>
-                                    <!-- End .product-title -->
-
-
-                                    <div class="product-price">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;{{this.country}}
-                                    </div><!-- End .product-price -->
-                                    <div class="product-price">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;{{this.streetname}}
-                                    </div><!-- End .product-price -->
-                                    <div class="product-price">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;{{this.city}}
-                                    </div><!-- End .product-price -->
-
-                                    <div class="product-price">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;{{this.state}}
-                                    </div><!-- End .product-price -->
-                                    <div class="product-price">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;{{this.pincode}}
-                                    </div><!-- End .product-price -->
-
-                                    <div class="product-price">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;{{this.mobile}}
-                                    </div><!-- End .product-price -->
+                                <h3 class="product-price"><a href=""></a>&nbsp;&nbsp;&nbsp;&nbsp;{{this.firstname}}
+                                </h3>
+                                <!-- End .product-title -->
 
 
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="settingAddress('{{this._id}}')">
-                                        Edit</button>
+                                <div class="product-price">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{this.country}}
+                                </div><!-- End .product-price -->
+                                <div class="product-price">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{this.streetname}}
+                                </div><!-- End .product-price -->
+                                <div class="product-price">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{this.city}}
+                                </div><!-- End .product-price -->
+
+                                <div class="product-price">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{this.state}}
+                                </div><!-- End .product-price -->
+                                <div class="product-price">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{this.pincode}}
+                                </div><!-- End .product-price -->
+
+                                <div class="product-price">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{{this.mobile}}
+                                </div><!-- End .product-price -->
 
 
-
-                                </div><!-- End .product-body -->
-                            </div><!-- End .product -->
-                        </div><!-- End .col-sm-6 col-lg-4 -->
-                        {{/each}}
-                    </div><!-- End .row -->
+                                <button type="button" class="btn btn-primary" onclick="settingAddress('{{this._id}}')">
+                                    Edit</button>
 
 
 
-                </div><!-- End .container -->
-            </div><!-- End .page-header -->
-            <nav aria-label="breadcrumb" class="breadcrumb-nav">
-
-            </nav><!-- End .breadcrumb-nav -->
-
-            <div class="page-content">
-                <div class="checkout">
-                    <div class="container">
-                        <div>
-                            <div class="page-content">
-
-                                <form action="/editaddress" method="post">
-                                    <div class="row">
-                                        <div class="col-lg-9">
-                                            <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <label>First Name *</label>
-                                                    <input type="text" id="firstname" name="firstname"
-                                                        class="form-control" onkeyup="validateName()">
-                                                    {{#each address}}
-                                                    <input type="text" name="addressId" value="{{this._id}}" hidden>
-                                                    {{/each}}
-
-                                                    <span id="name" class="text-danger"></span>
-                                                </div><!-- End .col-sm-6 -->
-
-                                                <div class="col-sm-6">
-                                                    <label>Last Name *</label>
-                                                    <input type="text" id="lastname" name="lastname"
-                                                        class="form-control" onkeyup="validatelastName()">
-                                                    <span id="LastName" class="text-danger"></span>
-                                                </div><!-- End .col-sm-6 -->
-                                            </div><!-- End .row -->
-
-                                            <label>Country *</label>
-                                            <input type="text" id="country" name="country" class="form-control"
-                                                onkeyup="validateCountry()">
-                                            <span id="Country" class="text-danger"></span>
-                                            <div>
-                                                <label>Street address *</label>
-                                                <input type="text" class="form-control" id="street" name="streetname"
-                                                    placeholder="Street name" onkeyup=" validatestreet()">
-                                                <span id="Street" class="text-danger"></span>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <label> City *</label>
-                                                    <input type="text" id="city" name="city" class="form-control"
-                                                        onkeyup="validateCity()">
-                                                    <span id="City" class="text-danger"></span>
-                                                </div><!-- End .col-sm-6 -->
-
-                                                <div class="col-sm-6">
-                                                    <label>State *</label>
-                                                    <input type="text" id="state" name="state" class="form-control"
-                                                        onkeyup=" validateState()">
-                                                    <span id="State" class="text-danger"></span>
-                                                </div><!-- End .col-sm-6 -->
-                                            </div><!-- End .row -->
-
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <label>Postcode *</label>
-                                                    <input type="text" id="Pincode" name="pincode" class="form-control"
-                                                        onkeyup="validpincode()">
-                                                    <span id="pincode" class="text-danger"></span>
-                                                </div><!-- End .col-sm-6 -->
-
-                                                <div class="col-sm-6">
-                                                    <label>Phone *</label>
-                                                    <input type="tel" id="phonenumber" name="mobile"
-                                                        class="form-control" onkeyup="validPhoneNumber()">
-                                                    <input type="text" name="userId" value="{{userId}}" hidden>
-                                                    <input type="text" name="status" value="confirmed" hidden>
-                                                    <span id="phonenumbers" class="text-danger"></span>
-                                                </div><!-- End .col-sm-6 -->
-                                            </div><!-- End .row -->
-
-                                            <label>Email address *</label>
-                                            <input type="email" id="Email" name="email" class="form-control"
-                                                onkeyup="validEmail()">
-                                            <span id="email" class="text-danger"></span>
-
-                                        </div><!-- End .col-lg-9 -->
-
-                                    </div><!-- End .row -->
-                                    <button class="btn btn-primary" type="submit"> <span>Save Changes</span><i
-                                            class="icon-long-arrow-right"> </i></button>
-
-                                </form>
-                            </div><!-- End .container -->
-                        </div><!-- End .checkout -->
-                    </div><!-- End .page-content -->
-                      <a  href="/wallet" class="col-1 ms-5 btn btn-warning"> Back</a>
-        </main><!-- End .main -->
-
-
-    </div><!-- End .page-wrapper -->
-    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
-
-    <div class="mobile-menu-container">
-        <div class="mobile-menu-wrapper">
-            <span class="mobile-menu-close"><i class="icon-close"></i></span>
-
-            <form action="#" method="get" class="mobile-search">
-                <label for="mobile-search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="mobile-search" id="mobile-search"
-                    placeholder="Search in..." required>
-                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-            </form>
+                            </div><!-- End .product-body -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-sm-6 col-lg-4 -->
+                    {{/each}}
+                </div><!-- End .row -->
 
 
 
-            <div class="social-icons">
-                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-            </div><!-- End .social-icons -->
-        </div><!-- End .mobile-menu-wrapper -->
-    </div><!-- End .mobile-menu-container -->
+            </div><!-- End .container -->
+        </div><!-- End .page-header -->
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
 
-    <!-- Sign in / Register Modal -->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="icon-close"></i></span>
-                    </button>
+        </nav><!-- End .breadcrumb-nav -->
+
+        <div class="page-content">
+            <div class="checkout">
+                <div class="container">
+                    <div>
+                        <div class="page-content">
+
+                            <form action="/editaddress" method="post">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label>First Name *</label>
+                                                <input type="text" id="firstname" name="firstname" class="form-control"
+                                                    onkeyup="validateName()">
+                                                {{#each address}}
+                                                <input type="text" name="addressId" value="{{this._id}}" hidden>
+                                                {{/each}}
+
+                                                <span id="name" class="text-danger"></span>
+                                            </div><!-- End .col-sm-6 -->
+
+                                            <div class="col-sm-6">
+                                                <label>Last Name *</label>
+                                                <input type="text" id="lastname" name="lastname" class="form-control"
+                                                    onkeyup="validatelastName()">
+                                                <span id="LastName" class="text-danger"></span>
+                                            </div><!-- End .col-sm-6 -->
+                                        </div><!-- End .row -->
+
+                                        <label>Country *</label>
+                                        <input type="text" id="country" name="country" class="form-control"
+                                            onkeyup="validateCountry()">
+                                        <span id="Country" class="text-danger"></span>
+                                        <div>
+                                            <label>Street address *</label>
+                                            <input type="text" class="form-control" id="street" name="streetname"
+                                                placeholder="Street name" onkeyup=" validatestreet()">
+                                            <span id="Street" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label> City *</label>
+                                                <input type="text" id="city" name="city" class="form-control"
+                                                    onkeyup="validateCity()">
+                                                <span id="City" class="text-danger"></span>
+                                            </div><!-- End .col-sm-6 -->
+
+                                            <div class="col-sm-6">
+                                                <label>State *</label>
+                                                <input type="text" id="state" name="state" class="form-control"
+                                                    onkeyup=" validateState()">
+                                                <span id="State" class="text-danger"></span>
+                                            </div><!-- End .col-sm-6 -->
+                                        </div><!-- End .row -->
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label>Postcode *</label>
+                                                <input type="text" id="Pincode" name="pincode" class="form-control"
+                                                    onkeyup="validpincode()">
+                                                <span id="pincode" class="text-danger"></span>
+                                            </div><!-- End .col-sm-6 -->
+
+                                            <div class="col-sm-6">
+                                                <label>Phone *</label>
+                                                <input type="tel" id="phonenumber" name="mobile" class="form-control"
+                                                    onkeyup="validPhoneNumber()">
+                                                <input type="text" name="userId" value="{{userId}}" hidden>
+                                                <input type="text" name="status" value="confirmed" hidden>
+                                                <span id="phonenumbers" class="text-danger"></span>
+                                            </div><!-- End .col-sm-6 -->
+                                        </div><!-- End .row -->
+
+                                        <label>Email address *</label>
+                                        <input type="email" id="Email" name="email" class="form-control"
+                                            onkeyup="validEmail()">
+                                        <span id="email" class="text-danger"></span>
+
+                                    </div><!-- End .col-lg-9 -->
+
+                                </div><!-- End .row -->
+                                <button class="btn btn-primary" type="submit"> <span>Save Changes</span><i
+                                        class="icon-long-arrow-right"> </i></button>
+
+                            </form>
+                        </div><!-- End .container -->
+                    </div><!-- End .checkout -->
+                </div><!-- End .page-content -->
+                <a href="/wallet" class="col-1 ms-5 btn btn-warning"> Back</a>
+    </main><!-- End .main -->
 
 
-                </div><!-- End .modal-body -->
-            </div><!-- End .modal-content -->
-        </div><!-- End .modal-dialog -->
-    </div><!-- End .modal -->
+</div><!-- End .page-wrapper -->
+<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+
+<div class="mobile-menu-container">
+    <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+        <form action="#" method="get" class="mobile-search">
+            <label for="mobile-search" class="sr-only">Search</label>
+            <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..."
+                required>
+            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+        </form>
 
 
 
-    <script>
-        function settingAddress(id) {
-            $.ajax({
-                url: '/selected-address',
-                data: {
-                    addressId: id
-                },
-                method: 'post',
-                success: (selectedAddress) => {
-                    console.log('llllllllllllll')
-                    console.log(selectedAddress)
+        <div class="social-icons">
+            <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+        </div><!-- End .social-icons -->
+    </div><!-- End .mobile-menu-wrapper -->
+</div><!-- End .mobile-menu-container -->
 
-                    document.getElementById('firstname').value = selectedAddress.firstname
-                    document.getElementById('lastname').value = selectedAddress.lastname
-                    document.getElementById('phonenumber').value = selectedAddress.mobile
-                    document.getElementById('Email').value = selectedAddress.email
-                    document.getElementById('street').value = selectedAddress.streetname
-                    document.getElementById('country').value = selectedAddress.country
-                    document.getElementById('city').value = selectedAddress.city
-                    document.getElementById('state').value = selectedAddress.state
-                    document.getElementById('Pincode').value = selectedAddress.pincode
-                }
-            })
+<!-- Sign in / Register Modal -->
+<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="icon-close"></i></span>
+                </button>
 
-        }
-    </script>
+
+            </div><!-- End .modal-body -->
+        </div><!-- End .modal-content -->
+    </div><!-- End .modal-dialog -->
+</div><!-- End .modal -->
+
+
+
+<script>
+    function settingAddress(id) {
+        $.ajax({
+            url: '/selected-address',
+            data: {
+                addressId: id
+            },
+            method: 'post',
+            success: (selectedAddress) => {
+                console.log('llllllllllllll')
+                console.log(selectedAddress)
+
+                document.getElementById('firstname').value = selectedAddress.firstname
+                document.getElementById('lastname').value = selectedAddress.lastname
+                document.getElementById('phonenumber').value = selectedAddress.mobile
+                document.getElementById('Email').value = selectedAddress.email
+                document.getElementById('street').value = selectedAddress.streetname
+                document.getElementById('country').value = selectedAddress.country
+                document.getElementById('city').value = selectedAddress.city
+                document.getElementById('state').value = selectedAddress.state
+                document.getElementById('Pincode').value = selectedAddress.pincode
+            }
+        })
+
+    }
+</script>

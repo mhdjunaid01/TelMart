@@ -101,7 +101,87 @@
 
     </div><!-- End .row -->
 </div><!-- End .cta -->
+<div class="mobile-menu-container">
+    <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
 
+        <form action="#" method="get" class="mobile-search">
+            <label for="mobile-search" class="sr-only">Search</label>
+            <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..."
+                required>
+            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+        </form>
+
+        <ul class="nav nav-pills-mobile nav-border-anim" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab" role="tab"
+                    aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
+            </li>
+           
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel"
+                aria-labelledby="mobile-menu-link">
+                <nav class="mobile-nav">
+                    <ul class="mobile-menu">
+                       <li>
+                                    <a href="/"  class="sf-with-ul">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/product/?page=1" class="sf-with-ul">Product</a>
+                                </li>
+                                {{#if userName}}
+                                <li>
+                                    <a href="/wallet" class="sf-with-ul">MY Account</a>
+                                </li>
+                                
+                                <li>
+                                        <a class="sf-with-ul" id="tab-dashboard-link"
+                                            data-toggle="tab" href="#tab-dashboard">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="/order" class="sf-with-ul"><span>Orders</span></a>
+                                    </li>
+                                    <li
+                                    >
+                                        <a href="/wishlist"
+                                            class="sf-with-ul"><span>whishlist</span></a>
+
+                                    </li>
+
+                                     <li class="nav-item mt-1 ">
+                                        <a href="/walletOg"
+                                            class="sf-with-ul"><span>Wallet</span></a>
+
+                                    </li>
+                                    <li>
+                                        <a href="/cart"
+                                            class="sf-with-ul"><span>Cart</span></a>
+
+                                    </li>
+
+                                   <li>
+                                        <a href="/editaddress"
+                                            class="sf-with-ul"><span>Edit Address</span></a>
+
+                                    </li>
+
+                                    <li class="nav-item ">
+                                        <a href="/logout" class="sf-with-ul"><span>Sign
+                                                Out</span></a>
+
+                                    </li>
+                                    {{/if}}
+                    </ul>
+                </nav><!-- End .mobile-nav -->
+            </div><!-- .End .tab-pane -->
+            
+        </div><!-- End .tab-content -->
+
+        
+    </div><!-- End .mobile-menu-wrapper -->
+</div><!-- End .mobile-menu-container -->
 
 
 

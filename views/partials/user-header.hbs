@@ -1,25 +1,41 @@
 
 <header class="header header-intro-clearance header-3 col-12">
-            <div class="header-top">
-                <div class="container">
-                  
+            <div class="header-top col-12">
+                <div class="container col-12">
+                    <div class="header-left">
+                      <a href="/" class="logo">
+                            <img src="/assets/images/Screenshot 2022-11-07 190743.png" alt="telMart Logo" style="width:5em; height:5em;">
+                        </a>
+                            
+                            
+                             
+                    </div><!-- End .header-left -->
 
-                    <div class="header-right" >
-                           {{#if userName}}
+                    <div class="header-right">
 
-                            <p style="margin-right: 18px; color: aliceblue;">{{userName.name}}</p> 
-                            {{/if}}
 
-                        <ul class="top-menu mt-1">
+                        <ul class="top-menu">
+                            
                             <li>
+                                 {{#if login}}
+                                <a  href="/logout">LogOut</a>
+                                 {{else}}
+                                 <a  href="/login">LogIn</a>
+                                 {{/if}}
+                                <ul class="top-menu mt-1" style="background-color: rgb(54, 53, 53);">
+                           
+                            <li>
+
                                 {{#if login}}
                              
                                         
-                                 <button class=" col-3 btn btn-outline-dark bg-dark" type="submit"> <a style="text-decoration:none; color: white" href="/logout"> Logout</a></button>
+                                 <button class="btn" type="submit"> <a style="text-decoration:none; color: antiquewhite;" href="/logout"> Logout</a></button>
                             
                                 {{else}}
-                                  <button class="col-3 btn btn-outline-dark bg-dark" type="submit"> <a style="text-decoration:none; color: white" href="/login"> LogIn</a></button>
+                                  <button class="btn" type="submit"> <a style="text-decoration:none; color: antiquewhite;" href="/login"> LogIn</a></button>
                                   {{/if}}
+                            </li>
+                        </ul><!-- End .top-menu -->
                             </li>
                         </ul><!-- End .top-menu -->
                     </div><!-- End .header-right -->
@@ -27,14 +43,13 @@
                 </div><!-- End .container -->
             </div><!-- End .header-top -->
 
-            <div class="header-middle">
-                <div class="container">
+            <div class="header-middle col-12">
+                <div class="container col-12">
                     <div class="header-left">
-                        
-                        
-                        <a href="/" class="logo">
-                            <img src="/assets/images/Screenshot 2022-11-07 190743.png" alt="Molla Logo" width="105" height="25">
-                        </a>
+                        <button class="mobile-menu-toggler">
+                            <span class="sr-only">Toggle mobile menu</span>
+                            <i class="icon-bars"></i>
+                        </button>
                     </div><!-- End .header-left -->
 
                     <div class="header-center">
@@ -44,48 +59,18 @@
                                 <div class="header-search-wrapper search-wrapper-wide">
                                     <label for="q" class="sr-only">Search</label>
                                     <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-
-                                    <input type="search" class="form-control" name="q" id="searchProducts" placeholder="Search product ..." required>
-                                    <ul id="productList" style="border: solid 2px; position: absolute; max-width: 360px; z-index: 5; background-color: white; width: 500px; display:none"> </ul>
-
+                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
                     </div>
 
                     <div class="header-right">
-                        {{!-- <div class="dropdown compare-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
-                                <div class="icon">
-                                    <i class="icon-random"></i>
-                                </div>
-                                <p>Compare</p>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="compare-products">
-                                    <li class="compare-product">
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
-                                    </li>
-                                    <li class="compare-product">
-                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
-                                    </li>
-                                </ul>
-
-                                <div class="compare-actions">
-                                    <a href="#" class="action-link">Clear All</a>
-                                    <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
-                                </div>
-                            </div><!-- End .dropdown-menu -->
-                        </div><!-- End .compare-dropdown --> --}}
-
                         <div class="wishlist">
                             <a href="/wishlist" title="Wishlist">
                                 <div class="icon">
                                     <i class="icon-heart-o"></i>
-                                      {{#if userName}}
+                                    {{#if userName}}
                                     <span class="wishlist-count badge" id="wishlist-count">{{wishlistCount}}</span>
                                     {{/if}}
                                 </div>
@@ -97,49 +82,52 @@
                             <a href="/cart" class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <div class="icon">
                                     <i class="icon-shopping-cart"></i>
-                                      {{#if userName}}
+                                     {{#if userName}}
                                     <span class=" cart-count badge badge-success " id="cart-count">{{cartCount}}</span>
                                     {{/if}}
                                 </div>
                                 <p>Cart</p>
-                            </a>
-
-                            
+                            </a>  
                         </div><!-- End .cart-dropdown -->
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
 
             <div class="header-bottom sticky-header">
-                <div class="container">
-                    
-                    <div class="header-center ">
-                        <nav class="main-nav ">
-                            <ul class="menu sf-arrows">
-                                <li >
-                                    <a href="/" >Home</a>
+                <div class="container col-12">
+                    <div class="header-left">
+                        <div class="dropdown category-dropdown">
+                           
+                            <div class="dropdown-menu">
+                            </div><!-- End .dropdown-menu -->
+                        </div><!-- End .category-dropdown -->
+                    </div><!-- End .header-left -->
 
-                                    
-                                </li>
-                               
+                    <div class="header-center">
+                        <nav class="main-nav">
+                            <ul class="menu sf-arrows">
                                 <li>
-                                    <a href="/product/?page=1" >Product</a>
+                                    <a href="/"  class="sf-with-ul">Home</a>
                                 </li>
-                               
+                                <li>
+                                    <a href="/product/?page=1" class="sf-with-ul">Product</a>
+                                </li>
                                 {{#if userName}}
-                                  <li>
-                                    <a href="/wallet" > My Account</a>
- 
+                                <li>
+                                    <a href="/wallet" class="sf-with-ul">MY Account</a>
                                 </li>
                                 {{/if}}
+                                
                             </ul><!-- End .menu -->
                         </nav><!-- End .main-nav -->
                     </div><!-- End .header-center -->
 
-                 
+
                 </div><!-- End .container -->
             </div><!-- End .header-bottom -->
         </header><!-- End .header -->
+
+
 
         <script>
     function sendData(e){
