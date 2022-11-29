@@ -137,11 +137,11 @@
                                         class="product-image" style="width: 250px; height:300px;">
                                 </a>
 
-                                <div class="product-action-vertical">
+                                {{!-- <div class="product-action-vertical">
                                     <a href="/addToWishlist/{{this._id}}"
                                         class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
-                                </div><!-- End .product-action -->
+                                </div><!-- End .product-action --> --}}
 
                                 <div class="product-action product-action-dark">
 
@@ -194,10 +194,101 @@
                 </div><!-- End .tab-content -->
             </div><!-- End .container -->
 
+            <div class="tab-content tab-content-carousel mt-4">
+                <div class="tab-pane p-0 fade show active" id="products-featured-tab" role="tabpanel"
+                    aria-labelledby="products-featured-link">
+                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
+                                "nav": true, 
+                                "dots": true,
+                                "margin": 20,
+                                "loop": false,
+                                "responsive": {
+                                    "0": {
+                                        "items":2
+                                    },
+                                    "600": {
+                                        "items":2
+                                    },
+                                    "992": {
+                                        "items":3
+                                    },
+                                    "1200": {
+                                        "items":4
+                                    }
+                                }
+                            }'>
+
+                        {{#each nextpro}}
+                        <div class="product product-2">
+                            <figure class="product-media">
+                                <a href="/productview/{{this._id}}">
+                                    <img src="/images/product/{{this.img.[0]}}" alt="Product image"
+                                        class="product-image" style="width: 250px; height:300px;">
+                                </a>
+
+                                {{!-- <div class="product-action-vertical">
+                                    <a href="/addToWishlist/{{this._id}}"
+                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                            wishlist</span></a>
+                                </div><!-- End .product-action --> --}}
+
+                                <div class="product-action product-action-dark">
+
+                                    <a href="/addToCart/{{this._id}}" class="btn-product btn-cart"
+                                        title="Add to cart"><span>add to cart</span></a>
+
+
+                                    <a href="/productview/{{this._id}}" class="btn-product btn-quickview"
+                                        title="Quick view"><span>quick view</span></a>
+                                </div><!-- End .product-action -->
+
+
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body">
+                                <div class="product-cat">
+                                    <a href="#"></a>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="#">{{this.phone}}</a></h3><!-- End .product-title -->
+                                <div class="product-price">
+
+                                    {{#if this.Percentage}}
+                                    <span>₹{{this.offPrice}}&nbsp;&nbsp;</span>
+                                    ₹ <s>{{this.originalPrice}} </s>
+                                    <span>&nbsp;&nbsp;{{this.Percentage}}%</span>
+                                    {{else}}
+                                    ₹{{this.price}}
+                                    {{/if}}
+
+                                </div><!-- End .product-price -->
+                            </div><!-- End .product-body -->
+                        </div><!-- End .product -->
+                        {{/each}}
+
+
+
+
+
+
+
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel"
+                        aria-labelledby="products-sale-link">
+
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel"
+                        aria-labelledby="products-top-link">
+
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .container -->
+
+
             <div class="mb-7 mb-lg-11"></div><!-- End .mb-7 -->
 
 
-            <div class="bg-light deal-container pt-7 pb-7 mb-5">
+            {{!-- <div class="bg-light deal-container pt-7 pb-7 mb-5">
                 <div class="container">
                     <div class="heading text-center mb-4">
                         <h2 class="title">Deals & Outlet</h2><!-- End .title -->
@@ -218,8 +309,8 @@
                                             Assistant</a></h3><!-- End .product-title -->
 
                                     <div class="product-price">
-                                        <span class="new-price">$129.00</span>
-                                        <span class="old-price">Was $150.99</span>
+                                        <span class="new-price">₹129.00</span>
+                                        <span class="old-price">Was ₹150.99</span>
                                     </div><!-- End .product-price -->
 
                                     <a href="product.html" class="btn btn-link"><span>Shop Now</span><i
@@ -239,7 +330,7 @@
                                             <figure class="product-media">
                                                 <span class="product-label label-circle label-top">Top</span>
                                                 <span class="product-label label-circle label-sale">Sale</span>
-                                                <a href="product.html">
+                                                <a href="#">
                                                     <img src="assets/images/demos/demo-3/products/product-5.jpg"
                                                         alt="Product image" class="product-image">
                                                 </a>
@@ -253,7 +344,7 @@
                                                 <div class="product-action product-action-dark">
                                                     <a href="#" class="btn-product btn-cart"
                                                         title="Add to cart"><span>add to cart</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                    <a href="#" class="btn-product btn-quickview"
                                                         title="Quick view"><span>quick view</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
@@ -262,11 +353,11 @@
                                                 <div class="product-cat">
                                                     <a href="#">Digital Cameras</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">Canon - EOS 5D Mark IV
+                                                <h3 class="product-title"><a href="#">Canon - EOS 5D Mark IV
                                                         DSLR Camera</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    <span class="new-price">$3,599.99</span>
-                                                    <span class="old-price">Was $3,999.99</span>
+                                                    <span class="new-price">₹3,599.99</span>
+                                                    <span class="old-price">Was ₹3,999.99</span>
                                                 </div><!-- End .product-price -->
 
                                             </div><!-- End .product-body -->
@@ -291,7 +382,7 @@
                                                 <div class="product-action product-action-dark">
                                                     <a href="#" class="btn-product btn-cart"
                                                         title="Add to cart"><span>add to cart</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                    <a href="#" class="btn-product btn-quickview"
                                                         title="Quick view"><span>quick view</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
@@ -300,11 +391,11 @@
                                                 <div class="product-cat">
                                                     <a href="#">Computers & Tablets</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">Apple - Smart Keyboard
+                                                <h3 class="product-title"><a href="#">Apple - Smart Keyboard
                                                         Folio for 11-inch iPad Pro</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    <span class="new-price">$179.00</span>
-                                                    <span class="old-price">Was $200.99</span>
+                                                    <span class="new-price">₹179.00</span>
+                                                    <span class="old-price">Was ₹200.99</span>
                                                 </div><!-- End .product-price -->
 
                                             </div><!-- End .product-body -->
@@ -313,7 +404,7 @@
                                 </div><!-- End .row -->
                             </div><!-- End .products -->
                         </div><!-- End .col-lg-6 -->
-                    </div><!-- End .row -->
+                    </div><!-- End .row --> --}}
 
 
     </main><!-- End .main -->
@@ -331,7 +422,7 @@
                             <div class="widget-call">
                                 <i class="icon-phone"></i>
                                 Got Question? Call us 24/7
-                                <a href="tel:#">+919446166285</a>
+                                <a href="tel:#">+9194461665</a>
                             </div><!-- End .widget-call -->
                         </div><!-- End .widget about-widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->

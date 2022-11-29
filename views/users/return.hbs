@@ -203,21 +203,21 @@
     --}}
     {{#each returnedProduct}}
     <div class="modal-body">
-        <div class="card mb-3">
+        <div class="card mb-3"> 
             <div class="row g-0">
-                <div class="col-md-4">
+                
+                <div class="col-md-6 mt-3" style="margin-left: 20em;">
+                   <div>
                     <img src="/images/product/{{this.product.img.[0]}}" height="80px" width="70px"
-                        class="img-fluid rounded-start m-5" alt="..." style="margin-left:500px ;">
+                        class="img-fluid rounded-start m-5" alt="..." style="margin-left:500px;">
 
                 </div>
-                <div class="col-md-6 mt-3">
-
 
                     <h6> {{this.product.phone}}</h6>
                     <h7>TOTAL:$</h7>
                     <h6> {{this.totalAmount}}</h6>
 
-                    <h7>SHIP TO:</h7>
+                    <h7></h7>
                     <h6>{{this.deleveryDetails.firstname}}</h6>
                     <h7> ORDER PLACED:</h7>
                     <h6>{{this.date}}</h6>

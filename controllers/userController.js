@@ -66,13 +66,15 @@ let username = async (req, res) => {
     let wishlistCount = null;
     let userName = req.session.user;
     let products= await userHelper.getAllproductforUser();
+    let nextpro= await userHelper.getAllpro();
+  
     if (req.session.userLogin) {
         cartCount = await userHelper.getCartCount(req.session.user._id);
         wishlistCount = await userHelper.getwishlistCount(req.session.user._id);
        
-        res.render('users/home', { cartCount, wishlistCount, userheader: true, login: true, userName,products });
+        res.render('users/home', { cartCount, wishlistCount, userheader: true, login: true, userName,products,nextpro});
     } else {
-        res.render('users/home', { userheader: true,products });
+        res.render('users/home', { userheader: true,products,nextpro });
     }
 };
 let signupPost = (req, res) => {

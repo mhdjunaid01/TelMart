@@ -23,20 +23,10 @@
 					{{#each orders}}
 					<tr>
 
-						<td class="price-col"><img src="/images/product/{{product.img.[0]}}" alt=""
-								style="height: 60px; width: 60px;"></td>
-
+						<td class="price-col"><img src="/images/product/{{product.img.[0]}}" alt=""style="height: 60px; width: 60px;"></td>
 						<td class="stock-col"><span class="">{{this.product.phone}}</span></td>
-
 						<td class="stock-col"><span class="in-stock">{{this.quantity}}</span></td>
-
-
 						<td class="stock-col"><span class="">{{this.status}}</span></td>
-
-
-
-
-
 						{{#if this.delivered}}
 						<td class="action-col">
 							<a href="/returnProduct/?orderid={{this._id}}&proId={{this.item}}"><button
@@ -53,8 +43,7 @@
 
 						{{#if this.cancelled}}
 						<td class="action-col">
-							<a href="/cancelorderStatus/?orderid={{this._id}}&proId={{this.item}}"><button
-									class="btn btn-block btn-danger">Cancel </button></a>
+							
 						</td>
 
 						{{else}}

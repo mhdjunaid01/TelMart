@@ -1114,6 +1114,14 @@ module.exports = {
         });
 
     },
+    getAllpro:()=>{
+        return new Promise ((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_COLLECTION).find().skip(6).toArray().then((response)=>{
+                resolve(response);
+            });
+        });
+
+    },
     getSearchedProducts:(payload)=>{
        
         return new Promise(async(resolve,reject)=>{
